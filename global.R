@@ -1,0 +1,8 @@
+# library(reembolsos)
+library(tidyverse)
+library(ggplot2)
+library(shinydashboard)
+library(treemap)
+library(gridExtra)
+library(scales)
+load("camara")
