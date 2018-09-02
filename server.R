@@ -1,41 +1,44 @@
 function(input, output, session) {
   
   top_10gastos<-reactive({ camara%>%
-      select(congressperson_name,total_net_value,subquota_description)%>%
+      select(congressperson_name,total_net_value,Tipo_de_Gasto=subquota_description)%>%
       filter(congressperson_name==input$parl)%>%
-      group_by(subquota_description)%>%
-      summarise(soma=sum(total_net_value))%>%
+      group_by(Tipo_de_Gasto)%>%
+      summarise(Valor_Total=sum(total_net_value))%>%
       top_n(10)
     
   })
-  output$top_10gastos <- renderPlot({
-    legend_ord <- levels(with(top_10gastos(), reorder(subquota_description, -soma)))
+  output$top_10gastos <- renderPlotly({
+    legend_ord <- levels(with(top_10gastos(), reorder(Tipo_de_Gasto, -Valor_Total)))
     options(scipen=10000)
-    ggplot(top_10gastos(),aes())+
-      geom_col(aes(reorder(subquota_description,-soma),soma,fill = subquota_description))+
+    ggplotly(ggplot(top_10gastos(),aes())+
+      geom_col(aes(reorder(Tipo_de_Gasto,-Valor_Total),Valor_Total,fill = Tipo_de_Gasto))+
       theme_minimal()+
       labs(fill="Tipo de gasto",y="Valor total(R$)")+
-      theme(axis.title.x=element_blank(),axis.text.x=element_blank(),axis.ticks.x=element_blank())+
+      theme(axis.title.x=element_blank(),axis.text.x=element_blank(),axis.ticks.x=element_blank(),legend.position = "none")+
       scale_fill_discrete(breaks=legend_ord)
+    )
   })
   
   top_10empresas<-reactive({ camara%>%
-      select(congressperson_name,total_net_value,supplier)%>%
+      select(congressperson_name,total_net_value,Empresa=supplier)%>%
       filter(congressperson_name==input$parl)%>%
-      group_by(supplier)%>%
-      summarise(soma=sum(total_net_value))%>%
+      group_by(Empresa)%>%
+      summarise(Valor_Total=sum(total_net_value))%>%
       top_n(10)
+    
   })
   
-  output$top_10empresas <- renderPlot({
-    legend_ord <- levels(with(top_10empresas(), reorder(supplier, -soma)))
+  output$top_10empresas <- renderPlotly({
+    legend_ord <- levels(with(top_10empresas(), reorder(Empresa, -Valor_Total)))
     options(scipen=10000)
-    ggplot(top_10empresas(),aes())+
-      geom_col(aes(reorder(supplier,-soma),soma,fill = supplier))+
+    ggplotly(ggplot(top_10empresas(),aes())+
+      geom_col(aes(reorder(Empresa,-Valor_Total),Valor_Total,fill = Empresa))+
       theme_minimal()+
       labs(fill="Fornecedor",y="Valor total(R$)")+
-      theme(axis.title.x=element_blank(),axis.text.x=element_blank(),axis.ticks.x=element_blank())+
+      theme(axis.title.x=element_blank(),axis.text.x=element_blank(),axis.ticks.x=element_blank(),legend.position = "none")+
       scale_fill_discrete(breaks=legend_ord)
+    )
   })
   
   gasto_tree<-reactive({ camara%>%
@@ -56,13 +59,12 @@ function(input, output, session) {
     )
   })
   
-  output$tabela <- renderDataTable(
-    
-    dados<-camara%>%
+  datasetInput <- reactive({
+    camara%>%
       filter(congressperson_name==input$parl)%>%
-      select(congressperson_name,document_value,issue_date,party  ,state,subquota_description,supplier,total_net_value,year)
-    
-  )
+      select(Valor_Reembolsado=total_net_value,Tipo_de_gasto=subquota_description,Fornecedor=supplier,Data=issue_date)
+  })
+  output$tabela <- renderDataTable(datasetInput())
   
   
   output$total <- renderPrint({
@@ -190,4 +192,23 @@ function(input, output, session) {
              color = "light-blue"
     )
   })
+  
+  # output$downloadData <- downloadHandler(
+  #     filename = function() {
+  #       paste('data-', Sys.Date(), '.csv', sep='')
+  #     },
+  #     content = function(con) {
+  #       write.csv(data, con)
+  #     }
+  #   )
+  output$downloadData <- downloadHandler(
+
+
+    filename = function() {
+     paste(input$parl, '.csv', sep=',')
+    },
+    content = function(file) {
+      write.csv(datasetInput(),file,row.names = F)
+    }
+  )
 }

@@ -16,7 +16,7 @@ dashboardPage(
     tabItems(
       tabItem(tabName = "dash",
               fluidRow(
-                box(width = 12,height = 100,status = "warning", title = "ESCOLHA UM DEPUTADO:",
+                box(width = 12,height = 100,status = "warning", title = "DIGITE O NOME DO SEU DEPUTADO FEDERAL:",
                     background = "light-blue",
                     selectInput("parl",label = NULL, choices =unique(as.character(camara$congressperson_name)),selected="ABELARDO")),
                 
@@ -37,14 +37,19 @@ dashboardPage(
                     plotOutput('diferenca_graf')),
                 
                 box(status = "warning",title="Top 10 tipos de gastos:",width = 12,
-                    plotOutput('top_10gastos')),
+                    plotlyOutput('top_10gastos')),
                 
                 box(status = "warning",title="Top 10 empresas em que o deputado mais pede reembolso:",width = 12,
-                    plotOutput('top_10empresas')),
+                    plotlyOutput('top_10empresas')),
                 
                 box( width = 12, status = "warning",
-                     dataTableOutput('tabela'))
+                     dataTableOutput('tabela')),
+                
+                # box(status = "warning",
+                #   downloadLink("ReembolsosDeputado", 'Download da tabela acima'))
+                box(downloadButton("downloadData",label="download" ))
               )
+              
               
               
               

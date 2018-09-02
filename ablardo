@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <script type="application/shiny-singletons"></script>
+  <script type="application/html-dependencies">json2[2014.02.04];jquery[1.12.4];shiny[1.1.0];font-awesome[4.7.0];selectize[0.11.2];datatables[1.10.5];datatables-bootstrap[1.10.5];bootstrap[3.3.7];AdminLTE[2.0.6];shinydashboard[0.7.0]</script>
+<script src="shared/json2-min.js"></script>
+<script src="shared/jquery.min.js"></script>
+<link href="shared/shiny.css" rel="stylesheet" />
+<script src="shared/shiny.min.js"></script>
+<link href="shared/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+<link href="shared/selectize/css/selectize.bootstrap3.css" rel="stylesheet" />
+<!--[if lt IE 9]>
+<script src="shared/selectize/js/es5-shim.min.js"></script>
+<![endif]-->
+<script src="shared/selectize/js/selectize.min.js"></script>
+<script src="shared/datatables/js/jquery.dataTables.min.js"></script>
+<link href="shared/datatables/css/dataTables.bootstrap.css" rel="stylesheet" />
+<link href="shared/datatables/css/dataTables.extra.css" rel="stylesheet" />
+<script src="shared/datatables/js/dataTables.bootstrap.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="shared/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="shared/bootstrap/js/bootstrap.min.js"></script>
+<script src="shared/bootstrap/shim/html5shiv.min.js"></script>
+<script src="shared/bootstrap/shim/respond.min.js"></script>
+<link href="AdminLTE-2.0.6/AdminLTE.min.css" rel="stylesheet" />
+<link href="AdminLTE-2.0.6/_all-skins.min.css" rel="stylesheet" />
+<script src="AdminLTE-2.0.6/app.min.js"></script>
+<link href="shinydashboard-0.7.0/shinydashboard.css" rel="stylesheet" />
+<script src="shinydashboard-0.7.0/shinydashboard.min.js"></script>  <title>Pedidos de reembolso dos deputados federais brasileiros</title>
+
+</head>
+
+<body class="skin-blue" style="min-height: 611px;">
+  <div class="wrapper">
+    <header class="main-header">
+      <span class="logo">Pedidos de reembolso dos deputados federais brasileiros</span>
+      <nav class="navbar navbar-static-top" role="navigation">
+        <span style="display:none;">
+          <i class="fa fa-bars"></i>
+        </span>
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav"></ul>
+        </div>
+      </nav>
+    </header>
+    <aside id="sidebarCollapsed" class="main-sidebar" data-collapsed="false">
+      <section id="sidebarItemExpanded" class="sidebar">
+        <ul class="sidebar-menu">
+          <li>
+            <a href="#shiny-tab-dash" data-toggle="tab" data-value="dash">
+              <i class="fa fa-search dollar"></i>
+              <span>Reembolsos</span>
+            </a>
+          </li>
+          <li>
+            <a href="#shiny-tab-sobre" data-toggle="tab" data-value="sobre">
+              <i class="fa fa-question-circle"></i>
+              <span>Sobre</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </aside>
+    <div class="content-wrapper">
+      <section class="content">
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane" id="shiny-tab-dash">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="box box-solid box-warning bg-light-blue" style="height: 100px">
+                  <div class="box-header">
+                    <h3 class="box-title">ESCOLHA UM DEPUTADO:</h3>
+                  </div>
+                  <div class="box-body">
+                    <div class="form-group shiny-input-container">
+                      <div>
+                        <select id="parl"><option value="ABELARDO CAMARINHA">ABELARDO CAMARINHA</option>
+<option value="ABELARDO LUPION">ABELARDO LUPION</option>
+<option value="ACÃ‰LIO CASAGRANDE">ACÃ‰LIO CASAGRANDE</option>
+<option value="ADEMIR CAMILO">ADEMIR CAMILO</option>
+<option value="AELTON FREITAS">AELTON FREITAS</option>
+<option value="AFFONSO CAMARGO">AFFONSO CAMARGO</option>
+<option value="AFONSO HAMM">AFONSO HAMM</option>
+<option value="AIRTON ROVEDA">AIRTON ROVEDA</option>
+<option value="ALBANO FRANCO">ALBANO FRANCO</option>
+<option value="ALBÃ‰RICO FILHO">ALBÃ‰RICO FILHO</option>
+<option value="ALBERTO FRAGA">ALBERTO FRAGA</option>
+<option value="ALBERTO SILVA">ALBERTO SILVA</option>
+<option value="ALCENI GUERRA">ALCENI GUERRA</option>
+<option value="ALDO REBELO">ALDO REBELO</option>
+<option value="ALEX CANZIANI">ALEX CANZIANI</option>
+<option value="ALEXANDRE CARDOSO">ALEXANDRE CARDOSO</option>
+<option value="ALEXANDRE SANTOS">ALEXANDRE SANTOS</option>
+<option value="ALEXANDRE SILVEIRA">ALEXANDRE SILVEIRA</option>
+<option value="ALFREDO KAEFER">ALFREDO KAEFER</option>
+<option value="ALICE PORTUGAL">ALICE PORTUGAL</option>
+<option value="ALINE CORRÃŠA">ALINE CORRÃŠA</option>
+<option value="ANA ARRAES">ANA ARRAES</option>
+<option value="ANDRÃ‰ DE PAULA">ANDRÃ‰ DE PAULA</option>
+<option value="ANDRE VARGAS">ANDRE VARGAS</option>
+<option value="ANDRÃ‰ ZACHAROW">ANDRÃ‰ ZACHAROW</option>
+<option value="ANDREIA ZITO">ANDREIA ZITO</option>
+<option value="ANGELA AMIN">ANGELA AMIN</option>
+<option value="ANGELA PORTELA">ANGELA PORTELA</option>
+<option value="ANGELO VANHONI">ANGELO VANHONI</option>
+<option value="ANÃBAL GOMES">ANÃBAL GOMES</option>
+<option value="ANSELMO DE JESUS">ANSELMO DE JESUS</option>
+<option value="ANTÃ”NIO ANDRADE">ANTÃ”NIO ANDRADE</option>
+<option value="ANTONIO BULHÃ•ES">ANTONIO BULHÃ•ES</option>
+<option value="ANTONIO CARLOS BISCAIA">ANTONIO CARLOS BISCAIA</option>
+<option value="ANTONIO CARLOS CHAMARIZ">ANTONIO CARLOS CHAMARIZ</option>
+<option value="ANTONIO CARLOS MAGALHÃƒES NETO">ANTONIO CARLOS MAGALHÃƒES NETO</option>
+<option value="ANTONIO CARLOS MENDES THAME">ANTONIO CARLOS MENDES THAME</option>
+<option value="ANTONIO CARLOS PANNUNZIO">ANTONIO CARLOS PANNUNZIO</option>
+<option value="ANTONIO CRUZ">ANTONIO CRUZ</option>
+<option value="ANTONIO FEIJÃƒO">ANTONIO FEIJÃƒO</option>
+<option value="ANTONIO PALOCCI">ANTONIO PALOCCI</option>
+<option value="ANTÃ”NIO ROBERTO">ANTÃ”NIO ROBERTO</option>
+<option value="ARACELY DE PAULA">ARACELY DE PAULA</option>
+<option value="ARIOSTO HOLANDA">ARIOSTO HOLANDA</option>
+<option value="ARLINDO CHINAGLIA">ARLINDO CHINAGLIA</option>
+<option value="ARMANDO ABÃLIO">ARMANDO ABÃLIO</option>
+<option value="ARMANDO MONTEIRO">ARMANDO MONTEIRO</option>
+<option value="ARNALDO FARIA DE SÃ">ARNALDO FARIA DE SÃ</option>
+<option value="ARNALDO JARDIM">ARNALDO JARDIM</option>
+<option value="ARNALDO MADEIRA">ARNALDO MADEIRA</option>
+<option value="ARNALDO VIANNA">ARNALDO VIANNA</option>
+<option value="ARNON BEZERRA">ARNON BEZERRA</option>
+<option value="AROLDE DE OLIVEIRA">AROLDE DE OLIVEIRA</option>
+<option value="ASDRUBAL BENTES">ASDRUBAL BENTES</option>
+<option value="ASSIS DO COUTO">ASSIS DO COUTO</option>
+<option value="ATHOS AVELINO">ATHOS AVELINO</option>
+<option value="ÃTILA LINS">ÃTILA LINS</option>
+<option value="ÃTILA LIRA">ÃTILA LIRA</option>
+<option value="AUGUSTO CARVALHO">AUGUSTO CARVALHO</option>
+<option value="AUGUSTO FARIAS">AUGUSTO FARIAS</option>
+<option value="AYRTON XEREZ">AYRTON XEREZ</option>
+<option value="B. SÃ">B. SÃ</option>
+<option value="BEL MESQUITA">BEL MESQUITA</option>
+<option value="BENE CAMACHO">BENE CAMACHO</option>
+<option value="BENEDITO DE LIRA">BENEDITO DE LIRA</option>
+<option value="BERNARDO ARISTON">BERNARDO ARISTON</option>
+<option value="BETINHO ROSADO">BETINHO ROSADO</option>
+<option value="BETO ALBUQUERQUE">BETO ALBUQUERQUE</option>
+<option value="BETO FARO">BETO FARO</option>
+<option value="BETO MANSUR">BETO MANSUR</option>
+<option value="BIFFI">BIFFI</option>
+<option value="BILAC PINTO">BILAC PINTO</option>
+<option value="BISPO GÃŠ TENUTA">BISPO GÃŠ TENUTA</option>
+<option value="BONIFÃCIO DE ANDRADA">BONIFÃCIO DE ANDRADA</option>
+<option value="BRIZOLA NETO">BRIZOLA NETO</option>
+<option value="BRUNO ARAÃšJO">BRUNO ARAÃšJO</option>
+<option value="BRUNO RODRIGUES">BRUNO RODRIGUES</option>
+<option value="CAMILO COLA">CAMILO COLA</option>
+<option value="CÃ‚NDIDO VACCAREZZA">CÃ‚NDIDO VACCAREZZA</option>
+<option value="CAPITÃƒO ASSUMÃ‡ÃƒO">CAPITÃƒO ASSUMÃ‡ÃƒO</option>
+<option value="CARLITO MERSS">CARLITO MERSS</option>
+<option value="CARLOS ABICALIL">CARLOS ABICALIL</option>
+<option value="CARLOS ALBERTO CANUTO">CARLOS ALBERTO CANUTO</option>
+<option value="CARLOS ALBERTO LERÃ‰IA">CARLOS ALBERTO LERÃ‰IA</option>
+<option value="CARLOS BEZERRA">CARLOS BEZERRA</option>
+<option value="CARLOS BRANDÃƒO">CARLOS BRANDÃƒO</option>
+<option value="CARLOS EDUARDO CADOCA">CARLOS EDUARDO CADOCA</option>
+<option value="CARLOS MANATO">CARLOS MANATO</option>
+<option value="CARLOS MELLES">CARLOS MELLES</option>
+<option value="CARLOS SAMPAIO">CARLOS SAMPAIO</option>
+<option value="CARLOS SANTANA">CARLOS SANTANA</option>
+<option value="CARLOS WILLIAN">CARLOS WILLIAN</option>
+<option value="CARLOS WILSON">CARLOS WILSON</option>
+<option value="CARLOS ZARATTINI">CARLOS ZARATTINI</option>
+<option value="CASSIO TANIGUCHI">CASSIO TANIGUCHI</option>
+<option value="CELSO MALDANER">CELSO MALDANER</option>
+<option value="CELSO RUSSOMANNO">CELSO RUSSOMANNO</option>
+<option value="CEZAR SILVESTRI">CEZAR SILVESTRI</option>
+<option value="CHARLES LUCENA">CHARLES LUCENA</option>
+<option value="CHICO ABREU">CHICO ABREU</option>
+<option value="CHICO ALENCAR">CHICO ALENCAR</option>
+<option value="CHICO D&#39;ANGELO">CHICO D'ANGELO</option>
+<option value="CHICO DA PRINCESA">CHICO DA PRINCESA</option>
+<option value="CHICO LOPES">CHICO LOPES</option>
+<option value="CIDA DIOGO">CIDA DIOGO</option>
+<option value="CIRO GOMES">CIRO GOMES</option>
+<option value="CIRO NOGUEIRA">CIRO NOGUEIRA</option>
+<option value="CIRO PEDROSA">CIRO PEDROSA</option>
+<option value="CLAUDIO CAJADO">CLAUDIO CAJADO</option>
+<option value="CLAUDIO DIAZ">CLAUDIO DIAZ</option>
+<option value="CLEBER VERDE">CLEBER VERDE</option>
+<option value="CLÃ“VIS FECURY">CLÃ“VIS FECURY</option>
+<option value="COLBERT MARTINS">COLBERT MARTINS</option>
+<option value="COSTA FERREIRA">COSTA FERREIRA</option>
+<option value="DAGOBERTO NOGUEIRA">DAGOBERTO NOGUEIRA</option>
+<option value="DALVA FIGUEIREDO">DALVA FIGUEIREDO</option>
+<option value="DAMIÃƒO FELICIANO">DAMIÃƒO FELICIANO</option>
+<option value="DANIEL ALMEIDA">DANIEL ALMEIDA</option>
+<option value="DARCÃSIO PERONDI">DARCÃSIO PERONDI</option>
+<option value="DAVI ALVES SILVA JÃšNIOR">DAVI ALVES SILVA JÃšNIOR</option>
+<option value="DÃ‰CIO LIMA">DÃ‰CIO LIMA</option>
+<option value="DELEY">DELEY</option>
+<option value="DEVANIR RIBEIRO">DEVANIR RIBEIRO</option>
+<option value="DILCEU SPERAFICO">DILCEU SPERAFICO</option>
+<option value="DIMAS RAMALHO">DIMAS RAMALHO</option>
+<option value="DOMINGOS DUTRA">DOMINGOS DUTRA</option>
+<option value="DR. ADILSON SOARES">DR. ADILSON SOARES</option>
+<option value="DR. NECHAR">DR. NECHAR</option>
+<option value="DR. PAULO CÃ‰SAR">DR. PAULO CÃ‰SAR</option>
+<option value="DR. ROSINHA">DR. ROSINHA</option>
+<option value="DR. UBIALI">DR. UBIALI</option>
+<option value="DR.TALMIR">DR.TALMIR</option>
+<option value="DUARTE NOGUEIRA">DUARTE NOGUEIRA</option>
+<option value="EDGAR MOURY">EDGAR MOURY</option>
+<option value="EDIGAR MÃƒO BRANCA">EDIGAR MÃƒO BRANCA</option>
+<option value="EDINHO BEZ">EDINHO BEZ</option>
+<option value="EDIO LOPES">EDIO LOPES</option>
+<option value="EDMAR MOREIRA">EDMAR MOREIRA</option>
+<option value="EDMILSON VALENTIM">EDMILSON VALENTIM</option>
+<option value="EDSON APARECIDO">EDSON APARECIDO</option>
+<option value="EDSON DUARTE">EDSON DUARTE</option>
+<option value="EDSON EZEQUIEL">EDSON EZEQUIEL</option>
+<option value="EDUARDO AMORIM">EDUARDO AMORIM</option>
+<option value="EDUARDO BARBOSA">EDUARDO BARBOSA</option>
+<option value="EDUARDO CUNHA">EDUARDO CUNHA</option>
+<option value="EDUARDO DA FONTE">EDUARDO DA FONTE</option>
+<option value="EDUARDO GOMES">EDUARDO GOMES</option>
+<option value="EDUARDO LOPES">EDUARDO LOPES</option>
+<option value="EDUARDO SCIARRA">EDUARDO SCIARRA</option>
+<option value="EDUARDO VALVERDE">EDUARDO VALVERDE</option>
+<option value="EFRAIM FILHO">EFRAIM FILHO</option>
+<option value="ELCIONE BARBALHO">ELCIONE BARBALHO</option>
+<option value="ELEUSES PAIVA">ELEUSES PAIVA</option>
+<option value="ELIENE LIMA">ELIENE LIMA</option>
+<option value="ELISEU PADILHA">ELISEU PADILHA</option>
+<option value="ELISMAR PRADO">ELISMAR PRADO</option>
+<option value="ELIZEU AGUIAR">ELIZEU AGUIAR</option>
+<option value="EMANUEL FERNANDES">EMANUEL FERNANDES</option>
+<option value="EMILIA FERNANDES">EMILIA FERNANDES</option>
+<option value="EMILIANO JOSÃ‰">EMILIANO JOSÃ‰</option>
+<option value="ENIO BACCI">ENIO BACCI</option>
+<option value="ERNANDES AMORIM">ERNANDES AMORIM</option>
+<option value="EUDES XAVIER">EUDES XAVIER</option>
+<option value="EUGÃŠNIO RABELO">EUGÃŠNIO RABELO</option>
+<option value="EUNICIO OLIVEIRA">EUNICIO OLIVEIRA</option>
+<option value="EVANDRO MILHOMEN">EVANDRO MILHOMEN</option>
+<option value="FÃBIO FARIA">FÃBIO FARIA</option>
+<option value="FÃBIO RAMALHO">FÃBIO RAMALHO</option>
+<option value="FÃBIO SOUTO">FÃBIO SOUTO</option>
+<option value="FÃTIMA BEZERRA">FÃTIMA BEZERRA</option>
+<option value="FÃTIMA PELAES">FÃTIMA PELAES</option>
+<option value="FELIPE BORNIER">FELIPE BORNIER</option>
+<option value="FELIPE MAIA">FELIPE MAIA</option>
+<option value="FÃ‰LIX MENDONÃ‡A">FÃ‰LIX MENDONÃ‡A</option>
+<option value="FERNANDO CHIARELLI">FERNANDO CHIARELLI</option>
+<option value="FERNANDO CHUCRE">FERNANDO CHUCRE</option>
+<option value="FERNANDO COELHO FILHO">FERNANDO COELHO FILHO</option>
+<option value="FERNANDO CORUJA">FERNANDO CORUJA</option>
+<option value="FERNANDO DE FABINHO">FERNANDO DE FABINHO</option>
+<option value="FERNANDO DINIZ">FERNANDO DINIZ</option>
+<option value="FERNANDO ESTIMA">FERNANDO ESTIMA</option>
+<option value="FERNANDO FERRO">FERNANDO FERRO</option>
+<option value="FERNANDO GABEIRA">FERNANDO GABEIRA</option>
+<option value="FERNANDO GONÃ‡ALVES">FERNANDO GONÃ‡ALVES</option>
+<option value="FERNANDO LOPES">FERNANDO LOPES</option>
+<option value="FERNANDO MARRONI">FERNANDO MARRONI</option>
+<option value="FERNANDO MELO">FERNANDO MELO</option>
+<option value="FERNANDO NASCIMENTO">FERNANDO NASCIMENTO</option>
+<option value="FILIPE PEREIRA">FILIPE PEREIRA</option>
+<option value="FLAVIANO MELO">FLAVIANO MELO</option>
+<option value="FLÃVIO BEZERRA">FLÃVIO BEZERRA</option>
+<option value="FLÃVIO DINO">FLÃVIO DINO</option>
+<option value="FRANCISCO PRACIANO">FRANCISCO PRACIANO</option>
+<option value="FRANCISCO RODRIGUES">FRANCISCO RODRIGUES</option>
+<option value="FRANCISCO ROSSI">FRANCISCO ROSSI</option>
+<option value="FRANCISCO TENÃ“RIO">FRANCISCO TENÃ“RIO</option>
+<option value="GASTÃƒO VIEIRA">GASTÃƒO VIEIRA</option>
+<option value="GEORGE HILTON">GEORGE HILTON</option>
+<option value="GERALDINHO">GERALDINHO</option>
+<option value="GERALDO PUDIM">GERALDO PUDIM</option>
+<option value="GERALDO RESENDE">GERALDO RESENDE</option>
+<option value="GERALDO SIMÃ•ES">GERALDO SIMÃ•ES</option>
+<option value="GERALDO THADEU">GERALDO THADEU</option>
+<option value="GERMANO BONOW">GERMANO BONOW</option>
+<option value="GERSON PERES">GERSON PERES</option>
+<option value="GERVÃSIO SILVA">GERVÃSIO SILVA</option>
+<option value="GIACOBO">GIACOBO</option>
+<option value="GILMAR MACHADO">GILMAR MACHADO</option>
+<option value="GIOVANNI QUEIROZ">GIOVANNI QUEIROZ</option>
+<option value="GIVALDO CARIMBÃƒO">GIVALDO CARIMBÃƒO</option>
+<option value="GLADSON CAMELI">GLADSON CAMELI</option>
+<option value="GLAUBER BRAGA">GLAUBER BRAGA</option>
+<option value="GONZAGA PATRIOTA">GONZAGA PATRIOTA</option>
+<option value="GORETE PEREIRA">GORETE PEREIRA</option>
+<option value="GUILHERME CAMPOS">GUILHERME CAMPOS</option>
+<option value="GUSTAVO FRUET">GUSTAVO FRUET</option>
+<option value="HENRIQUE AFONSO">HENRIQUE AFONSO</option>
+<option value="HENRIQUE EDUARDO ALVES">HENRIQUE EDUARDO ALVES</option>
+<option value="HENRIQUE FONTANA">HENRIQUE FONTANA</option>
+<option value="HERMES PARCIANELLO">HERMES PARCIANELLO</option>
+<option value="HOMERO PEREIRA">HOMERO PEREIRA</option>
+<option value="HUGO LEAL">HUGO LEAL</option>
+<option value="HUMBERTO SOUTO">HUMBERTO SOUTO</option>
+<option value="IBSEN PINHEIRO">IBSEN PINHEIRO</option>
+<option value="ILDERLEI CORDEIRO">ILDERLEI CORDEIRO</option>
+<option value="INDIO DA COSTA">INDIO DA COSTA</option>
+<option value="INOCÃŠNCIO OLIVEIRA">INOCÃŠNCIO OLIVEIRA</option>
+<option value="IRAN BARBOSA">IRAN BARBOSA</option>
+<option value="IRINY LOPES">IRINY LOPES</option>
+<option value="ÃRIS DE ARAÃšJO">ÃRIS DE ARAÃšJO</option>
+<option value="IVAN VALENTE">IVAN VALENTE</option>
+<option value="JACKSON BARRETO">JACKSON BARRETO</option>
+<option value="JADER BARBALHO">JADER BARBALHO</option>
+<option value="JAIME MARTINS">JAIME MARTINS</option>
+<option value="JAIR BOLSONARO">JAIR BOLSONARO</option>
+<option value="JAIRO ATAÃDE">JAIRO ATAÃDE</option>
+<option value="JAIRO CARNEIRO">JAIRO CARNEIRO</option>
+<option value="JANETE CAPIBERIBE">JANETE CAPIBERIBE</option>
+<option value="JANETE ROCHA PIETÃ">JANETE ROCHA PIETÃ</option>
+<option value="JEFFERSON CAMPOS">JEFFERSON CAMPOS</option>
+<option value="JERONIMO REIS">JERONIMO REIS</option>
+<option value="JILMAR TATTO">JILMAR TATTO</option>
+<option value="JÃ” MORAES">JÃ” MORAES</option>
+<option value="JOÃƒO ALMEIDA">JOÃƒO ALMEIDA</option>
+<option value="JOÃƒO BITTAR">JOÃƒO BITTAR</option>
+<option value="JOÃƒO CAMPOS">JOÃƒO CAMPOS</option>
+<option value="JOÃƒO CARLOS BACELAR">JOÃƒO CARLOS BACELAR</option>
+<option value="JOÃƒO DADO">JOÃƒO DADO</option>
+<option value="JOÃƒO FONTES">JOÃƒO FONTES</option>
+<option value="JOÃƒO LEÃƒO">JOÃƒO LEÃƒO</option>
+<option value="JOÃƒO MAGALHÃƒES">JOÃƒO MAGALHÃƒES</option>
+<option value="JOÃƒO MAIA">JOÃƒO MAIA</option>
+<option value="JOÃƒO MATOS">JOÃƒO MATOS</option>
+<option value="JOÃƒO OLIVEIRA">JOÃƒO OLIVEIRA</option>
+<option value="JOÃƒO PAULO CUNHA">JOÃƒO PAULO CUNHA</option>
+<option value="JOÃƒO PIZZOLATTI">JOÃƒO PIZZOLATTI</option>
+<option value="JOAQUIM BELTRÃƒO">JOAQUIM BELTRÃƒO</option>
+<option value="JOFRAN FREJAT">JOFRAN FREJAT</option>
+<option value="JORGE BITTAR">JORGE BITTAR</option>
+<option value="JORGE BOEIRA">JORGE BOEIRA</option>
+<option value="JORGE KHOURY">JORGE KHOURY</option>
+<option value="JORGE TADEU MUDALEN">JORGE TADEU MUDALEN</option>
+<option value="JORGINHO MALULY">JORGINHO MALULY</option>
+<option value="JOSÃ‰ AIRTON CIRILO">JOSÃ‰ AIRTON CIRILO</option>
+<option value="JOSÃ‰ ANÃBAL">JOSÃ‰ ANÃBAL</option>
+<option value="JOSÃ‰ C. STANGARLINI">JOSÃ‰ C. STANGARLINI</option>
+<option value="JOSÃ‰ CARLOS ALELUIA">JOSÃ‰ CARLOS ALELUIA</option>
+<option value="JOSÃ‰ CARLOS ARAÃšJO">JOSÃ‰ CARLOS ARAÃšJO</option>
+<option value="JOSÃ‰ CARLOS MACHADO">JOSÃ‰ CARLOS MACHADO</option>
+<option value="JOSÃ‰ CARLOS VIEIRA">JOSÃ‰ CARLOS VIEIRA</option>
+<option value="JOSÃ‰ CHAVES">JOSÃ‰ CHAVES</option>
+<option value="JOSÃ‰ EDMAR">JOSÃ‰ EDMAR</option>
+<option value="JOSE EDUARDO CARDOZO">JOSE EDUARDO CARDOZO</option>
+<option value="JOSÃ‰ FERNANDO APARECIDO DE OLI">JOSÃ‰ FERNANDO APARECIDO DE OLI</option>
+<option value="JOSÃ‰ GENOÃNO">JOSÃ‰ GENOÃNO</option>
+<option value="JOSÃ‰ GUIMARÃƒES">JOSÃ‰ GUIMARÃƒES</option>
+<option value="JOSÃ‰ LINHARES">JOSÃ‰ LINHARES</option>
+<option value="JOSÃ‰ MENDONÃ‡A BEZERRA">JOSÃ‰ MENDONÃ‡A BEZERRA</option>
+<option value="JOSÃ‰ MENTOR">JOSÃ‰ MENTOR</option>
+<option value="JOSÃ‰ OTÃVIO GERMANO">JOSÃ‰ OTÃVIO GERMANO</option>
+<option value="JOSÃ‰ PAULO TÃ“FFANO">JOSÃ‰ PAULO TÃ“FFANO</option>
+<option value="JOSÃ‰ ROCHA">JOSÃ‰ ROCHA</option>
+<option value="JOSÃ‰ SANTANA VASCONCELLOS">JOSÃ‰ SANTANA VASCONCELLOS</option>
+<option value="JOSEPH BANDEIRA">JOSEPH BANDEIRA</option>
+<option value="JOVAIR ARANTES">JOVAIR ARANTES</option>
+<option value="JULIÃƒO AMIN">JULIÃƒO AMIN</option>
+<option value="JÃšLIO CESAR">JÃšLIO CESAR</option>
+<option value="JÃšLIO DELGADO">JÃšLIO DELGADO</option>
+<option value="JULIO SEMEGHINI">JULIO SEMEGHINI</option>
+<option value="JURANDIL JUAREZ">JURANDIL JUAREZ</option>
+<option value="JURANDY LOUREIRO">JURANDY LOUREIRO</option>
+<option value="JUSMARI OLIVEIRA">JUSMARI OLIVEIRA</option>
+<option value="JUTAHY JUNIOR">JUTAHY JUNIOR</option>
+<option value="JUVENIL">JUVENIL</option>
+<option value="LAEL VARELLA">LAEL VARELLA</option>
+<option value="LAERTE BESSA">LAERTE BESSA</option>
+<option value="LAUREZ MOREIRA">LAUREZ MOREIRA</option>
+<option value="LÃZARO BOTELHO">LÃZARO BOTELHO</option>
+<option value="LEANDRO SAMPAIO">LEANDRO SAMPAIO</option>
+<option value="LEANDRO VILELA">LEANDRO VILELA</option>
+<option value="LELO COIMBRA">LELO COIMBRA</option>
+<option value="LÃ‰O ALCÃ‚NTARA">LÃ‰O ALCÃ‚NTARA</option>
+<option value="LÃ‰O VIVAS">LÃ‰O VIVAS</option>
+<option value="LEONARDO MONTEIRO">LEONARDO MONTEIRO</option>
+<option value="LEONARDO QUINTÃƒO">LEONARDO QUINTÃƒO</option>
+<option value="LEONARDO VILELA">LEONARDO VILELA</option>
+<option value="LÃDICE DA MATA">LÃDICE DA MATA</option>
+<option value="LINCOLN PORTELA">LINCOLN PORTELA</option>
+<option value="LINDOMAR GARÃ‡ON">LINDOMAR GARÃ‡ON</option>
+<option value="LIRA MAIA">LIRA MAIA</option>
+<option value="LOBBE NETO">LOBBE NETO</option>
+<option value="LUCENIRA PIMENTEL">LUCENIRA PIMENTEL</option>
+<option value="LUCIANA COSTA">LUCIANA COSTA</option>
+<option value="LUCIANA GENRO">LUCIANA GENRO</option>
+<option value="LUCIANO CASTRO">LUCIANO CASTRO</option>
+<option value="LUCIANO PIZZATTO">LUCIANO PIZZATTO</option>
+<option value="LÃšCIO VALE">LÃšCIO VALE</option>
+<option value="LUIS CARLOS HEINZE">LUIS CARLOS HEINZE</option>
+<option value="LUIZ ALBERTO">LUIZ ALBERTO</option>
+<option value="LUIZ BASSUMA">LUIZ BASSUMA</option>
+<option value="LUIZ BITTENCOURT">LUIZ BITTENCOURT</option>
+<option value="LUIZ CARLOS BUSATO">LUIZ CARLOS BUSATO</option>
+<option value="LUIZ CARLOS HAULY">LUIZ CARLOS HAULY</option>
+<option value="LUIZ CARLOS SETIM">LUIZ CARLOS SETIM</option>
+<option value="LUIZ CARREIRA">LUIZ CARREIRA</option>
+<option value="LUIZ COUTO">LUIZ COUTO</option>
+<option value="LUIZ FERNANDO FARIA">LUIZ FERNANDO FARIA</option>
+<option value="LUIZ MOREIRA">LUIZ MOREIRA</option>
+<option value="LUIZ PAULO VELLOZO LUCAS">LUIZ PAULO VELLOZO LUCAS</option>
+<option value="LUIZ SÃ‰RGIO">LUIZ SÃ‰RGIO</option>
+<option value="LUIZA ERUNDINA">LUIZA ERUNDINA</option>
+<option value="LUPÃ‰RCIO RAMOS">LUPÃ‰RCIO RAMOS</option>
+<option value="MAGELA">MAGELA</option>
+<option value="MAIA FILHO">MAIA FILHO</option>
+<option value="MAJOR FÃBIO">MAJOR FÃBIO</option>
+<option value="MANOEL JUNIOR">MANOEL JUNIOR</option>
+<option value="MANOEL SALVIANO">MANOEL SALVIANO</option>
+<option value="MANUELA D&#39;ÃVILA">MANUELA D'ÃVILA</option>
+<option value="MARÃ‡AL FILHO">MARÃ‡AL FILHO</option>
+<option value="MARCELO ALMEIDA">MARCELO ALMEIDA</option>
+<option value="MARCELO CASTRO">MARCELO CASTRO</option>
+<option value="MARCELO GUIMARÃƒES FILHO">MARCELO GUIMARÃƒES FILHO</option>
+<option value="MARCELO ITAGIBA">MARCELO ITAGIBA</option>
+<option value="MARCELO MELO">MARCELO MELO</option>
+<option value="MARCELO ORTIZ">MARCELO ORTIZ</option>
+<option value="MARCELO SERAFIM">MARCELO SERAFIM</option>
+<option value="MARCELO TEIXEIRA">MARCELO TEIXEIRA</option>
+<option value="MÃRCIO FRANÃ‡A">MÃRCIO FRANÃ‡A</option>
+<option value="MARCIO JUNQUEIRA">MARCIO JUNQUEIRA</option>
+<option value="MÃRCIO MARINHO">MÃRCIO MARINHO</option>
+<option value="MARCIO REINALDO MOREIRA">MARCIO REINALDO MOREIRA</option>
+<option value="MARCO MAIA">MARCO MAIA</option>
+<option value="MARCONDES GADELHA">MARCONDES GADELHA</option>
+<option value="MARCOS ANTONIO">MARCOS ANTONIO</option>
+<option value="MARCOS LIMA">MARCOS LIMA</option>
+<option value="MARCOS MEDRADO">MARCOS MEDRADO</option>
+<option value="MARCOS MONTES">MARCOS MONTES</option>
+<option value="MARIA DO ROSÃRIO">MARIA DO ROSÃRIO</option>
+<option value="MARIA HELENA">MARIA HELENA</option>
+<option value="MARIA LÃšCIA CARDOSO">MARIA LÃšCIA CARDOSO</option>
+<option value="MARINA MAGGESSI">MARINA MAGGESSI</option>
+<option value="MARINHA RAUPP">MARINHA RAUPP</option>
+<option value="MÃRIO DE OLIVEIRA">MÃRIO DE OLIVEIRA</option>
+<option value="MÃRIO HERINGER">MÃRIO HERINGER</option>
+<option value="MÃRIO NEGROMONTE">MÃRIO NEGROMONTE</option>
+<option value="MAURÃCIO QUINTELLA LESSA">MAURÃCIO QUINTELLA LESSA</option>
+<option value="MAURÃCIO RANDS">MAURÃCIO RANDS</option>
+<option value="MAURÃCIO TRINDADE">MAURÃCIO TRINDADE</option>
+<option value="MAURO BENEVIDES">MAURO BENEVIDES</option>
+<option value="MAURO LOPES">MAURO LOPES</option>
+<option value="MAURO MARIANI">MAURO MARIANI</option>
+<option value="MAURO NAZIF">MAURO NAZIF</option>
+<option value="MENDES RIBEIRO FILHO">MENDES RIBEIRO FILHO</option>
+<option value="MENDONÃ‡A PRADO">MENDONÃ‡A PRADO</option>
+<option value="MICHEL TEMER">MICHEL TEMER</option>
+<option value="MIGUEL CORRÃŠA">MIGUEL CORRÃŠA</option>
+<option value="MIGUEL MARTINI">MIGUEL MARTINI</option>
+<option value="MILTON BARBOSA">MILTON BARBOSA</option>
+<option value="MILTON MONTI">MILTON MONTI</option>
+<option value="MILTON VIEIRA">MILTON VIEIRA</option>
+<option value="MIRO TEIXEIRA">MIRO TEIXEIRA</option>
+<option value="MOACIR MICHELETTO">MOACIR MICHELETTO</option>
+<option value="MOISES AVELINO">MOISES AVELINO</option>
+<option value="MOREIRA MENDES">MOREIRA MENDES</option>
+<option value="NARCIO RODRIGUES">NARCIO RODRIGUES</option>
+<option value="NATAN DONADON">NATAN DONADON</option>
+<option value="NAZARENO FONTELES">NAZARENO FONTELES</option>
+<option value="NEILTON MULIM">NEILTON MULIM</option>
+<option value="NELSON BORNIER">NELSON BORNIER</option>
+<option value="NELSON GOETTEN">NELSON GOETTEN</option>
+<option value="NELSON MARQUEZELLI">NELSON MARQUEZELLI</option>
+<option value="NELSON MEURER">NELSON MEURER</option>
+<option value="NELSON PELLEGRINO">NELSON PELLEGRINO</option>
+<option value="NELSON PROENÃ‡A">NELSON PROENÃ‡A</option>
+<option value="NELSON TRAD">NELSON TRAD</option>
+<option value="NEUDO CAMPOS">NEUDO CAMPOS</option>
+<option value="NICE LOBÃƒO">NICE LOBÃƒO</option>
+<option value="NILMAR RUIZ">NILMAR RUIZ</option>
+<option value="NILSON MOURAO">NILSON MOURAO</option>
+<option value="NILSON PINTO">NILSON PINTO</option>
+<option value="ODAIR CUNHA">ODAIR CUNHA</option>
+<option value="ODELMO LEÃƒO">ODELMO LEÃƒO</option>
+<option value="ODÃLIO BALBINOTTI">ODÃLIO BALBINOTTI</option>
+<option value="OLAVO CALHEIROS">OLAVO CALHEIROS</option>
+<option value="ONYX LORENZONI">ONYX LORENZONI</option>
+<option value="OSMAR JÃšNIOR">OSMAR JÃšNIOR</option>
+<option value="OSMAR SERRAGLIO">OSMAR SERRAGLIO</option>
+<option value="OSMAR TERRA">OSMAR TERRA</option>
+<option value="OSORIO ADRIANO">OSORIO ADRIANO</option>
+<option value="OSVALDO BIOLCHI">OSVALDO BIOLCHI</option>
+<option value="OSVALDO REIS">OSVALDO REIS</option>
+<option value="OTAVIO LEITE">OTAVIO LEITE</option>
+<option value="PAES DE LIRA">PAES DE LIRA</option>
+<option value="PAES LANDIM">PAES LANDIM</option>
+<option value="PASTOR MANOEL FERREIRA">PASTOR MANOEL FERREIRA</option>
+<option value="PASTOR PEDRO RIBEIRO">PASTOR PEDRO RIBEIRO</option>
+<option value="PAULO ABI-ACKEL">PAULO ABI-ACKEL</option>
+<option value="PAULO BORNHAUSEN">PAULO BORNHAUSEN</option>
+<option value="PAULO DELGADO">PAULO DELGADO</option>
+<option value="PAULO HENRIQUE LUSTOSA">PAULO HENRIQUE LUSTOSA</option>
+<option value="PAULO LIMA">PAULO LIMA</option>
+<option value="PAULO MAGALHÃƒES">PAULO MAGALHÃƒES</option>
+<option value="PAULO MALUF">PAULO MALUF</option>
+<option value="PAULO PEREIRA DA SILVA">PAULO PEREIRA DA SILVA</option>
+<option value="PAULO PIAU">PAULO PIAU</option>
+<option value="PAULO PIMENTA">PAULO PIMENTA</option>
+<option value="PAULO RATTES">PAULO RATTES</option>
+<option value="PAULO ROBERTO PEREIRA">PAULO ROBERTO PEREIRA</option>
+<option value="PAULO ROCHA">PAULO ROCHA</option>
+<option value="PAULO RUBEM SANTIAGO">PAULO RUBEM SANTIAGO</option>
+<option value="PAULO TEIXEIRA">PAULO TEIXEIRA</option>
+<option value="PEDRO CHAVES">PEDRO CHAVES</option>
+<option value="PEDRO EUGÃŠNIO">PEDRO EUGÃŠNIO</option>
+<option value="PEDRO FERNANDES">PEDRO FERNANDES</option>
+<option value="PEDRO HENRY">PEDRO HENRY</option>
+<option value="PEDRO NOVAIS">PEDRO NOVAIS</option>
+<option value="PEDRO WILSON">PEDRO WILSON</option>
+<option value="PEPE VARGAS">PEPE VARGAS</option>
+<option value="PERPÃ‰TUA ALMEIDA">PERPÃ‰TUA ALMEIDA</option>
+<option value="PINTO ITAMARATY">PINTO ITAMARATY</option>
+<option value="POMPEO DE MATTOS">POMPEO DE MATTOS</option>
+<option value="PROFESSOR LUIZINHO">PROFESSOR LUIZINHO</option>
+<option value="PROFESSOR RUY PAULETTI">PROFESSOR RUY PAULETTI</option>
+<option value="PROFESSOR SETIMO">PROFESSOR SETIMO</option>
+<option value="PROFESSOR VICTÃ“RIO GALLI">PROFESSOR VICTÃ“RIO GALLI</option>
+<option value="PROFESSORA RAQUEL TEIXEIRA">PROFESSORA RAQUEL TEIXEIRA</option>
+<option value="RAFAEL GUERRA">RAFAEL GUERRA</option>
+<option value="RAIMUNDO GOMES DE MATOS">RAIMUNDO GOMES DE MATOS</option>
+<option value="RATINHO JUNIOR">RATINHO JUNIOR</option>
+<option value="RAUL HENRY">RAUL HENRY</option>
+<option value="RAUL JUNGMANN">RAUL JUNGMANN</option>
+<option value="REBECCA GARCIA">REBECCA GARCIA</option>
+<option value="REGINALDO LOPES">REGINALDO LOPES</option>
+<option value="RÃ‰GIS DE OLIVEIRA">RÃ‰GIS DE OLIVEIRA</option>
+<option value="REINALDO NOGUEIRA">REINALDO NOGUEIRA</option>
+<option value="RENATO AMARY">RENATO AMARY</option>
+<option value="RENATO MOLLING">RENATO MOLLING</option>
+<option value="RIBAMAR ALVES">RIBAMAR ALVES</option>
+<option value="RICARDO BARROS">RICARDO BARROS</option>
+<option value="RICARDO BERZOINI">RICARDO BERZOINI</option>
+<option value="RICARDO QUIRINO">RICARDO QUIRINO</option>
+<option value="RICARDO TRIPOLI">RICARDO TRIPOLI</option>
+<option value="RITA CAMATA">RITA CAMATA</option>
+<option value="ROBERTO ALVES">ROBERTO ALVES</option>
+<option value="ROBERTO BALESTRA">ROBERTO BALESTRA</option>
+<option value="ROBERTO BRITTO">ROBERTO BRITTO</option>
+<option value="ROBERTO MAGALHÃƒES">ROBERTO MAGALHÃƒES</option>
+<option value="ROBERTO ROCHA">ROBERTO ROCHA</option>
+<option value="ROBERTO SANTIAGO">ROBERTO SANTIAGO</option>
+<option value="ROCHA LOURES">ROCHA LOURES</option>
+<option value="RODOVALHO">RODOVALHO</option>
+<option value="RODRIGO DE CASTRO">RODRIGO DE CASTRO</option>
+<option value="RODRIGO MAIA">RODRIGO MAIA</option>
+<option value="RODRIGO ROLLEMBERG">RODRIGO ROLLEMBERG</option>
+<option value="ROGERIO LISBOA">ROGERIO LISBOA</option>
+<option value="ROGÃ‰RIO MARINHO">ROGÃ‰RIO MARINHO</option>
+<option value="RÃ”MULO GOUVEIA">RÃ”MULO GOUVEIA</option>
+<option value="RONALDO CAIADO">RONALDO CAIADO</option>
+<option value="ROSE DE FREITAS">ROSE DE FREITAS</option>
+<option value="RUBENS OTONI">RUBENS OTONI</option>
+<option value="SABINO CASTELO BRANCO">SABINO CASTELO BRANCO</option>
+<option value="SANDES JÃšNIOR">SANDES JÃšNIOR</option>
+<option value="SANDRA ROSADO">SANDRA ROSADO</option>
+<option value="SANDRO MABEL">SANDRO MABEL</option>
+<option value="SARAIVA FELIPE">SARAIVA FELIPE</option>
+<option value="SARNEY FILHO">SARNEY FILHO</option>
+<option value="SEBASTIÃƒO BALA ROCHA">SEBASTIÃƒO BALA ROCHA</option>
+<option value="SEBASTIÃƒO MADEIRA">SEBASTIÃƒO MADEIRA</option>
+<option value="SÃ‰RGIO BARRADAS CARNEIRO">SÃ‰RGIO BARRADAS CARNEIRO</option>
+<option value="SÃ‰RGIO BRITO">SÃ‰RGIO BRITO</option>
+<option value="SÃ‰RGIO MORAES">SÃ‰RGIO MORAES</option>
+<option value="SÃ‰RGIO PETECÃƒO">SÃ‰RGIO PETECÃƒO</option>
+<option value="SEVERIANO ALVES">SEVERIANO ALVES</option>
+<option value="SILAS BRASILEIRO">SILAS BRASILEIRO</option>
+<option value="SILAS CÃ‚MARA">SILAS CÃ‚MARA</option>
+<option value="SILVIO COSTA">SILVIO COSTA</option>
+<option value="SILVIO LOPES">SILVIO LOPES</option>
+<option value="SILVIO TORRES">SILVIO TORRES</option>
+<option value="SIMÃƒO SESSIM">SIMÃƒO SESSIM</option>
+<option value="SOLANGE ALMEIDA">SOLANGE ALMEIDA</option>
+<option value="SOLANGE AMARAL">SOLANGE AMARAL</option>
+<option value="SUELI VIDIGAL">SUELI VIDIGAL</option>
+<option value="SUELY">SUELY</option>
+<option value="TADEU FILIPPELLI">TADEU FILIPPELLI</option>
+<option value="TAKAYAMA">TAKAYAMA</option>
+<option value="TATICO">TATICO</option>
+<option value="TELMA DE SOUZA">TELMA DE SOUZA</option>
+<option value="THELMA DE OLIVEIRA">THELMA DE OLIVEIRA</option>
+<option value="THEMISTOCLES SAMPAIO">THEMISTOCLES SAMPAIO</option>
+<option value="TONHA MAGALHÃƒES">TONHA MAGALHÃƒES</option>
+<option value="ULDURICO PINTO">ULDURICO PINTO</option>
+<option value="URZENI ROCHA">URZENI ROCHA</option>
+<option value="VADÃƒO GOMES">VADÃƒO GOMES</option>
+<option value="VALADARES FILHO">VALADARES FILHO</option>
+<option value="VALDEMAR COSTA NETO">VALDEMAR COSTA NETO</option>
+<option value="VALDIR COLATTO">VALDIR COLATTO</option>
+<option value="VALTENIR PEREIRA">VALTENIR PEREIRA</option>
+<option value="VANDER LOUBET">VANDER LOUBET</option>
+<option value="VANDERLEI MACRIS">VANDERLEI MACRIS</option>
+<option value="VANESSA GRAZZIOTIN">VANESSA GRAZZIOTIN</option>
+<option value="VELOSO">VELOSO</option>
+<option value="VIC PIRES FRANCO">VIC PIRES FRANCO</option>
+<option value="VICENTE ARRUDA">VICENTE ARRUDA</option>
+<option value="VICENTINHO">VICENTINHO</option>
+<option value="VICENTINHO ALVES">VICENTINHO ALVES</option>
+<option value="VIEIRA DA CUNHA">VIEIRA DA CUNHA</option>
+<option value="VIGNATTI">VIGNATTI</option>
+<option value="VILSON COVATTI">VILSON COVATTI</option>
+<option value="VINICIUS CARVALHO">VINICIUS CARVALHO</option>
+<option value="VIRGILIO GUIMARAES">VIRGILIO GUIMARAES</option>
+<option value="VITAL DO REGO FILHO">VITAL DO REGO FILHO</option>
+<option value="VITOR PENIDO">VITOR PENIDO</option>
+<option value="WALDEMIR MOKA">WALDEMIR MOKA</option>
+<option value="WALDIR MARANHÃƒO">WALDIR MARANHÃƒO</option>
+<option value="WALDIR NEVES">WALDIR NEVES</option>
+<option value="WALTER IHOSHI">WALTER IHOSHI</option>
+<option value="WANDENKOLK GONÃ‡ALVES">WANDENKOLK GONÃ‡ALVES</option>
+<option value="WASHINGTON LUIZ">WASHINGTON LUIZ</option>
+<option value="WELLINGTON FAGUNDES">WELLINGTON FAGUNDES</option>
+<option value="WELLINGTON ROBERTO">WELLINGTON ROBERTO</option>
+<option value="WILLIAM WOO">WILLIAM WOO</option>
+<option value="WILSON BRAGA">WILSON BRAGA</option>
+<option value="WILSON PICLER">WILSON PICLER</option>
+<option value="WILSON SANTIAGO">WILSON SANTIAGO</option>
+<option value="WLADIMIR COSTA">WLADIMIR COSTA</option>
+<option value="WOLNEY QUEIROZ">WOLNEY QUEIROZ</option>
+<option value="ZÃ‰ GERALDO">ZÃ‰ GERALDO</option>
+<option value="ZÃ‰ GERARDO">ZÃ‰ GERARDO</option>
+<option value="ZÃ‰ VIEIRA">ZÃ‰ VIEIRA</option>
+<option value="ZENALDO COUTINHO">ZENALDO COUTINHO</option>
+<option value="ZEQUINHA MARINHO">ZEQUINHA MARINHO</option>
+<option value="ZEZÃ‰U RIBEIRO">ZEZÃ‰U RIBEIRO</option>
+<option value="ZONTA">ZONTA</option>
+<option value="PAULO RENATO SOUZA">PAULO RENATO SOUZA</option>
+<option value="BARBOSA NETO">BARBOSA NETO</option>
+<option value="JOÃƒO HERRMANN NETO">JOÃƒO HERRMANN NETO</option>
+<option value="ADÃƒO PRETTO">ADÃƒO PRETTO</option>
+<option value="IRIS SIMÃ•ES">IRIS SIMÃ•ES</option>
+<option value="AGNALDO MUNIZ">AGNALDO MUNIZ</option>
+<option value="ANN PONTES">ANN PONTES</option>
+<option value="ANTONIO JOSÃ‰ MEDEIROS">ANTONIO JOSÃ‰ MEDEIROS</option>
+<option value="CHICO DALTRO">CHICO DALTRO</option>
+<option value="DAVI ALCOLUMBRE">DAVI ALCOLUMBRE</option>
+<option value="EDSON SANTOS">EDSON SANTOS</option>
+<option value="EURIPEDES MIRANDA">EURIPEDES MIRANDA</option>
+<option value="FREIRE JÃšNIOR">FREIRE JÃšNIOR</option>
+<option value="GEDDEL VIEIRA LIMA">GEDDEL VIEIRA LIMA</option>
+<option value="JOSÃ‰ PIMENTEL">JOSÃ‰ PIMENTEL</option>
+<option value="JUNIOR MARZOLA">JUNIOR MARZOLA</option>
+<option value="LEONARDO PICCIANI">LEONARDO PICCIANI</option>
+<option value="PAULO BAUER">PAULO BAUER</option>
+<option value="PEDRO VALADARES">PEDRO VALADARES</option>
+<option value="REINHOLD STEPHANES">REINHOLD STEPHANES</option>
+<option value="RICARTE DE FREITAS">RICARTE DE FREITAS</option>
+<option value="RODRIGO BETHLEM">RODRIGO BETHLEM</option>
+<option value="SÃ">SÃ</option>
+<option value="VIEGAS">VIEGAS</option>
+<option value="WALTER FELDMAN">WALTER FELDMAN</option>
+<option value="WALTER PINHEIRO">WALTER PINHEIRO</option>
+<option value="ACÃCIO JÃšNIOR">ACÃCIO JÃšNIOR</option>
+<option value="ACELINO POPÃ“">ACELINO POPÃ“</option>
+<option value="ADRIAN">ADRIAN</option>
+<option value="AGUINALDO RIBEIRO">AGUINALDO RIBEIRO</option>
+<option value="ALBERTO FILHO">ALBERTO FILHO</option>
+<option value="ALBERTO MOURÃƒO">ALBERTO MOURÃƒO</option>
+<option value="ALCEU MOREIRA">ALCEU MOREIRA</option>
+<option value="ALESSANDRO MOLON">ALESSANDRO MOLON</option>
+<option value="ALEXANDRE LEITE">ALEXANDRE LEITE</option>
+<option value="ALEXANDRE ROSO">ALEXANDRE ROSO</option>
+<option value="ALFREDO SIRKIS">ALFREDO SIRKIS</option>
+<option value="ALMEIDA LIMA">ALMEIDA LIMA</option>
+<option value="AMAURI TEIXEIRA">AMAURI TEIXEIRA</option>
+<option value="ANDERSON FERREIRA">ANDERSON FERREIRA</option>
+<option value="ANDRÃ‰ DIAS">ANDRÃ‰ DIAS</option>
+<option value="ANDRÃ‰ FIGUEIREDO">ANDRÃ‰ FIGUEIREDO</option>
+<option value="ANDRE MONTORO">ANDRE MONTORO</option>
+<option value="ANDRE MOURA">ANDRE MOURA</option>
+<option value="Ã‚NGELO AGNOLIN">Ã‚NGELO AGNOLIN</option>
+<option value="ANTHONY GAROTINHO">ANTHONY GAROTINHO</option>
+<option value="ANTÃ”NIA LÃšCIA">ANTÃ”NIA LÃšCIA</option>
+<option value="ANTONIO BALHMANN">ANTONIO BALHMANN</option>
+<option value="ANTONIO BRITO">ANTONIO BRITO</option>
+<option value="ANTONIO CARLOS">ANTONIO CARLOS</option>
+<option value="ANTONIO IMBASSAHY">ANTONIO IMBASSAHY</option>
+<option value="ARMANDO VERGÃLIO">ARMANDO VERGÃLIO</option>
+<option value="ARNALDO JORDY">ARNALDO JORDY</option>
+<option value="ARTHUR LIRA">ARTHUR LIRA</option>
+<option value="ARTHUR OLIVEIRA MAIA">ARTHUR OLIVEIRA MAIA</option>
+<option value="ARTUR BRUNO">ARTUR BRUNO</option>
+<option value="ASSIS CARVALHO">ASSIS CARVALHO</option>
+<option value="ASSIS MELO">ASSIS MELO</option>
+<option value="AUDIFAX">AUDIFAX</option>
+<option value="AUGUSTO COUTINHO">AUGUSTO COUTINHO</option>
+<option value="AUREO">AUREO</option>
+<option value="BENEDITA DA SILVA">BENEDITA DA SILVA</option>
+<option value="BENJAMIN MARANHÃƒO">BENJAMIN MARANHÃƒO</option>
+<option value="BERINHO BANTIM">BERINHO BANTIM</option>
+<option value="BERNARDO SANTANA DE VASCONCELLOS">BERNARDO SANTANA DE VASCONCELLOS</option>
+<option value="BOHN GASS">BOHN GASS</option>
+<option value="BRUNA FURLAN">BRUNA FURLAN</option>
+<option value="CABO JULIANO RABELO">CABO JULIANO RABELO</option>
+<option value="CARLAILE PEDROSA">CARLAILE PEDROSA</option>
+<option value="CARLINHOS ALMEIDA">CARLINHOS ALMEIDA</option>
+<option value="CARLOS ALBERTO">CARLOS ALBERTO</option>
+<option value="CARLOS MAGNO">CARLOS MAGNO</option>
+<option value="CARLOS ROBERTO">CARLOS ROBERTO</option>
+<option value="CARLOS SOUZA">CARLOS SOUZA</option>
+<option value="CARMEN ZANOTTO">CARMEN ZANOTTO</option>
+<option value="CELCITA PINHEIRO">CELCITA PINHEIRO</option>
+<option value="CELIA ROCHA">CELIA ROCHA</option>
+<option value="CESAR COLNAGO">CESAR COLNAGO</option>
+<option value="CÃ‰SAR HALUM">CÃ‰SAR HALUM</option>
+<option value="CHICO DAS VERDURAS">CHICO DAS VERDURAS</option>
+<option value="CHICO NETO">CHICO NETO</option>
+<option value="CIDA BORGHETTI">CIDA BORGHETTI</option>
+<option value="CLÃUDIO PUTY">CLÃUDIO PUTY</option>
+<option value="CRISTIANO">CRISTIANO</option>
+<option value="DANIEL FONTANA">DANIEL FONTANA</option>
+<option value="DANILO FORTE">DANILO FORTE</option>
+<option value="DANRLEI DE DEUS HINTERHOLZ">DANRLEI DE DEUS HINTERHOLZ</option>
+<option value="DELEGADO FRANCISCHINI">DELEGADO FRANCISCHINI</option>
+<option value="DELEGADO PROTÃ“GENES">DELEGADO PROTÃ“GENES</option>
+<option value="DELEGADO WALDIR">DELEGADO WALDIR</option>
+<option value="DIEGO ANDRADE">DIEGO ANDRADE</option>
+<option value="DIMAS FABIANO">DIMAS FABIANO</option>
+<option value="DOMINGOS NETO">DOMINGOS NETO</option>
+<option value="DOMINGOS SÃVIO">DOMINGOS SÃVIO</option>
+<option value="DR. ALUIZIO">DR. ALUIZIO</option>
+<option value="DR. CARLOS ALBERTO">DR. CARLOS ALBERTO</option>
+<option value="DR. GRILO">DR. GRILO</option>
+<option value="DR. JORGE SILVA">DR. JORGE SILVA</option>
+<option value="DRA. ELAINE ABISSAMRA">DRA. ELAINE ABISSAMRA</option>
+<option value="DUDIMAR PAXIUBA">DUDIMAR PAXIUBA</option>
+<option value="EDINHO ARAÃšJO">EDINHO ARAÃšJO</option>
+<option value="EDINHO MONTEMOR">EDINHO MONTEMOR</option>
+<option value="EDIR OLIVEIRA">EDIR OLIVEIRA</option>
+<option value="EDIVALDO HOLANDA JUNIOR">EDIVALDO HOLANDA JUNIOR</option>
+<option value="EDMAR ARRUDA">EDMAR ARRUDA</option>
+<option value="EDSON PIMENTA">EDSON PIMENTA</option>
+<option value="EDSON SILVA">EDSON SILVA</option>
+<option value="EDUARDO AZEREDO">EDUARDO AZEREDO</option>
+<option value="ELI CORRÃŠA FILHO">ELI CORRÃŠA FILHO</option>
+<option value="ELIANE ROLIM">ELIANE ROLIM</option>
+<option value="ERIKA KOKAY">ERIKA KOKAY</option>
+<option value="ERIVELTON SANTANA">ERIVELTON SANTANA</option>
+<option value="EROS BIONDINI">EROS BIONDINI</option>
+<option value="ESPERIDIÃƒO AMIN">ESPERIDIÃƒO AMIN</option>
+<option value="FÃBIO TRAD">FÃBIO TRAD</option>
+<option value="FÃ‰LIX MENDONÃ‡A JÃšNIOR">FÃ‰LIX MENDONÃ‡A JÃšNIOR</option>
+<option value="FERNANDO JORDÃƒO">FERNANDO JORDÃƒO</option>
+<option value="FERNANDO TORRES">FERNANDO TORRES</option>
+<option value="FLÃVIA MORAIS">FLÃVIA MORAIS</option>
+<option value="FLAVIO ANTUNES">FLAVIO ANTUNES</option>
+<option value="FRANCISCO ARAÃšJO">FRANCISCO ARAÃšJO</option>
+<option value="FRANCISCO ESCÃ“RCIO">FRANCISCO ESCÃ“RCIO</option>
+<option value="FRANCISCO FLORIANO">FRANCISCO FLORIANO</option>
+<option value="FREDO JUNIOR">FREDO JUNIOR</option>
+<option value="GABRIEL CHALITA">GABRIEL CHALITA</option>
+<option value="GABRIEL GUIMARÃƒES">GABRIEL GUIMARÃƒES</option>
+<option value="GEAN LOUREIRO">GEAN LOUREIRO</option>
+<option value="GENECIAS NORONHA">GENECIAS NORONHA</option>
+<option value="GIOVANI CHERINI">GIOVANI CHERINI</option>
+<option value="GIROTO">GIROTO</option>
+<option value="GISELA SEQUEIRA">GISELA SEQUEIRA</option>
+<option value="GUILHERME MUSSI">GUILHERME MUSSI</option>
+<option value="HELENO SILVA">HELENO SILVA</option>
+<option value="HÃ‰LIO SANTOS">HÃ‰LIO SANTOS</option>
+<option value="HENRIQUE OLIVEIRA">HENRIQUE OLIVEIRA</option>
+<option value="HEULER CRUVINEL">HEULER CRUVINEL</option>
+<option value="HUGO MOTTA">HUGO MOTTA</option>
+<option value="HUGO NAPOLEÃƒO">HUGO NAPOLEÃƒO</option>
+<option value="IARA BERNARDI">IARA BERNARDI</option>
+<option value="IRACEMA PORTELLA">IRACEMA PORTELLA</option>
+<option value="IRAJÃ ABREU">IRAJÃ ABREU</option>
+<option value="ITAMAR ROCHA">ITAMAR ROCHA</option>
+<option value="IZALCI LUCAS">IZALCI LUCAS</option>
+<option value="JANDIRA FEGHALI">JANDIRA FEGHALI</option>
+<option value="JÃ‚NIO NATAL">JÃ‚NIO NATAL</option>
+<option value="JAQUELINE RORIZ">JAQUELINE RORIZ</option>
+<option value="JEAN WYLLYS">JEAN WYLLYS</option>
+<option value="JERÃ”NIMO GOERGEN">JERÃ”NIMO GOERGEN</option>
+<option value="JESUS RODRIGUES">JESUS RODRIGUES</option>
+<option value="JHONATAN DE JESUS">JHONATAN DE JESUS</option>
+<option value="JOÃƒO ANANIAS">JOÃƒO ANANIAS</option>
+<option value="JOÃƒO ARRUDA">JOÃƒO ARRUDA</option>
+<option value="JOÃƒO BATISTA">JOÃƒO BATISTA</option>
+<option value="JOÃƒO LYRA">JOÃƒO LYRA</option>
+<option value="JOÃƒO PAULO LIMA">JOÃƒO PAULO LIMA</option>
+<option value="JOÃƒO RODRIGUES">JOÃƒO RODRIGUES</option>
+<option value="JONAS DONIZETTE">JONAS DONIZETTE</option>
+<option value="JORGE ALBERTO">JORGE ALBERTO</option>
+<option value="JORGE CÃ”RTE REAL">JORGE CÃ”RTE REAL</option>
+<option value="JORGE PINHEIRO">JORGE PINHEIRO</option>
+<option value="JORGINHO MELLO">JORGINHO MELLO</option>
+<option value="JOSÃ‰ AUGUSTO MAIA">JOSÃ‰ AUGUSTO MAIA</option>
+<option value="JOSÃ‰ DE FILIPPI">JOSÃ‰ DE FILIPPI</option>
+<option value="JOSÃ‰ HUMBERTO">JOSÃ‰ HUMBERTO</option>
+<option value="JOSÃ‰ NUNES">JOSÃ‰ NUNES</option>
+<option value="JOSÃ‰ PRIANTE">JOSÃ‰ PRIANTE</option>
+<option value="JOSÃ‰ ROBERTO DUDÃ‰">JOSÃ‰ ROBERTO DUDÃ‰</option>
+<option value="JOSE STÃ‰DILE">JOSE STÃ‰DILE</option>
+<option value="JOSIAS GOMES">JOSIAS GOMES</option>
+<option value="JOSUÃ‰ BENGTSON">JOSUÃ‰ BENGTSON</option>
+<option value="JÃšLIO CAMPOS">JÃšLIO CAMPOS</option>
+<option value="JULIO LOPES">JULIO LOPES</option>
+<option value="JÃšNIOR COIMBRA">JÃšNIOR COIMBRA</option>
+<option value="JUNJI ABE">JUNJI ABE</option>
+<option value="KEIKO OTA">KEIKO OTA</option>
+<option value="LAERCIO OLIVEIRA">LAERCIO OLIVEIRA</option>
+<option value="LAURIETE">LAURIETE</option>
+<option value="LEONARDO GADELHA">LEONARDO GADELHA</option>
+<option value="LEOPOLDO MEYER">LEOPOLDO MEYER</option>
+<option value="LILIAM SÃ">LILIAM SÃ</option>
+<option value="LOURIVAL MENDES">LOURIVAL MENDES</option>
+<option value="LUCI CHOINACKI">LUCI CHOINACKI</option>
+<option value="LUCIANA SANTOS">LUCIANA SANTOS</option>
+<option value="LUCIANO MOREIRA">LUCIANO MOREIRA</option>
+<option value="LUCIO VIEIRA LIMA">LUCIO VIEIRA LIMA</option>
+<option value="LUIS TIBÃ‰">LUIS TIBÃ‰</option>
+<option value="LUIZ ARGÃ”LO">LUIZ ARGÃ”LO</option>
+<option value="LUIZ CARLOS">LUIZ CARLOS</option>
+<option value="LUIZ FERNANDO MACHADO">LUIZ FERNANDO MACHADO</option>
+<option value="LUIZ NISHIMORI">LUIZ NISHIMORI</option>
+<option value="LUIZ NOÃ‰">LUIZ NOÃ‰</option>
+<option value="LUIZ OTAVIO">LUIZ OTAVIO</option>
+<option value="LUIZ PITIMAN">LUIZ PITIMAN</option>
+<option value="MAGDA MOFATTO">MAGDA MOFATTO</option>
+<option value="MANDETTA">MANDETTA</option>
+<option value="MARA GABRILLI">MARA GABRILLI</option>
+<option value="MARCELO AGUIAR">MARCELO AGUIAR</option>
+<option value="MARCELO MATOS">MARCELO MATOS</option>
+<option value="MARCIO BITTAR">MARCIO BITTAR</option>
+<option value="MÃRCIO MACÃŠDO">MÃRCIO MACÃŠDO</option>
+<option value="MARCIO PASSOS">MARCIO PASSOS</option>
+<option value="MARCO TEBALDI">MARCO TEBALDI</option>
+<option value="MARCON">MARCON</option>
+<option value="MARCOS ROGÃ‰RIO">MARCOS ROGÃ‰RIO</option>
+<option value="MARCUS PESTANA">MARCUS PESTANA</option>
+<option value="MARINA SANTANNA">MARINA SANTANNA</option>
+<option value="MARLLOS SAMPAIO">MARLLOS SAMPAIO</option>
+<option value="MAURÃCIO DZIEDRICKI">MAURÃCIO DZIEDRICKI</option>
+<option value="MENDONÃ‡A FILHO">MENDONÃ‡A FILHO</option>
+<option value="MIRIQUINHO BATISTA">MIRIQUINHO BATISTA</option>
+<option value="MISSIONÃRIO JOSÃ‰ OLIMPIO">MISSIONÃRIO JOSÃ‰ OLIMPIO</option>
+<option value="NELSON MARCHEZAN JUNIOR">NELSON MARCHEZAN JUNIOR</option>
+<option value="NELSON PADOVANI">NELSON PADOVANI</option>
+<option value="NERI GELLER">NERI GELLER</option>
+<option value="NEWTON CARDOSO">NEWTON CARDOSO</option>
+<option value="NEWTON LIMA">NEWTON LIMA</option>
+<option value="NILDA GONDIM">NILDA GONDIM</option>
+<option value="NILSON LEITÃƒO">NILSON LEITÃƒO</option>
+<option value="NILTON CAPIXABA">NILTON CAPIXABA</option>
+<option value="ONOFRE SANTO AGOSTINI">ONOFRE SANTO AGOSTINI</option>
+<option value="OTONIEL LIMA">OTONIEL LIMA</option>
+<option value="OZIEL OLIVEIRA">OZIEL OLIVEIRA</option>
+<option value="PADRE JOÃƒO">PADRE JOÃƒO</option>
+<option value="PADRE TON">PADRE TON</option>
+<option value="PASTOR EURICO">PASTOR EURICO</option>
+<option value="PASTOR FRANKEMBERGEN">PASTOR FRANKEMBERGEN</option>
+<option value="PAUDERNEY AVELINO">PAUDERNEY AVELINO</option>
+<option value="PAULO CESAR QUARTIERO">PAULO CESAR QUARTIERO</option>
+<option value="PAULO FEIJÃ“">PAULO FEIJÃ“</option>
+<option value="PAULO FOLETTO">PAULO FOLETTO</option>
+<option value="PAULO FREIRE">PAULO FREIRE</option>
+<option value="PAULO TADEU">PAULO TADEU</option>
+<option value="PAULO WAGNER">PAULO WAGNER</option>
+<option value="PEDRO PAULO">PEDRO PAULO</option>
+<option value="PEDRO UCZAI">PEDRO UCZAI</option>
+<option value="PENNA">PENNA</option>
+<option value="POLICARPO">POLICARPO</option>
+<option value="PR. MARCO FELICIANO">PR. MARCO FELICIANO</option>
+<option value="PROFESSORA DORINHA SEABRA REZENDE">PROFESSORA DORINHA SEABRA REZENDE</option>
+<option value="PROFESSORA MARCIVANIA">PROFESSORA MARCIVANIA</option>
+<option value="R. SÃ FILHO">R. SÃ FILHO</option>
+<option value="RAIMUNDÃƒO">RAIMUNDÃƒO</option>
+<option value="RAUL LIMA">RAUL LIMA</option>
+<option value="REGUFFE">REGUFFE</option>
+<option value="REINALDO AZAMBUJA">REINALDO AZAMBUJA</option>
+<option value="RENAN FILHO">RENAN FILHO</option>
+<option value="RENATO COZZOLINO">RENATO COZZOLINO</option>
+<option value="RENZO BRAZ">RENZO BRAZ</option>
+<option value="RICARDO IZAR">RICARDO IZAR</option>
+<option value="ROBERTO DE LUCENA">ROBERTO DE LUCENA</option>
+<option value="ROBERTO DORNER">ROBERTO DORNER</option>
+<option value="ROBERTO FREIRE">ROBERTO FREIRE</option>
+<option value="ROBERTO TEIXEIRA">ROBERTO TEIXEIRA</option>
+<option value="ROBSON TUMA">ROBSON TUMA</option>
+<option value="RODRIGO GARCIA">RODRIGO GARCIA</option>
+<option value="ROGÃ‰RIO CARVALHO">ROGÃ‰RIO CARVALHO</option>
+<option value="ROGÃ‰RIO PENINHA MENDONÃ‡A">ROGÃ‰RIO PENINHA MENDONÃ‡A</option>
+<option value="ROGÃ‰RIO SILVA">ROGÃ‰RIO SILVA</option>
+<option value="ROMANNA REMOR">ROMANNA REMOR</option>
+<option value="ROMÃRIO">ROMÃRIO</option>
+<option value="ROMERO RODRIGUES">ROMERO RODRIGUES</option>
+<option value="RONALDO BENEDET">RONALDO BENEDET</option>
+<option value="RONALDO FONSECA">RONALDO FONSECA</option>
+<option value="RONALDO NOGUEIRA">RONALDO NOGUEIRA</option>
+<option value="RONALDO ZULKE">RONALDO ZULKE</option>
+<option value="ROSANE FERREIRA">ROSANE FERREIRA</option>
+<option value="ROSINHA DA ADEFAL">ROSINHA DA ADEFAL</option>
+<option value="RUBENS BUENO">RUBENS BUENO</option>
+<option value="RUI COSTA">RUI COSTA</option>
+<option value="RUI PALMEIRA">RUI PALMEIRA</option>
+<option value="RUY CARNEIRO">RUY CARNEIRO</option>
+<option value="SÃGUAS MORAES">SÃGUAS MORAES</option>
+<option value="SALLES">SALLES</option>
+<option value="SALVADOR ZIMBALDI">SALVADOR ZIMBALDI</option>
+<option value="SANDRO ALEX">SANDRO ALEX</option>
+<option value="SERGIO GUERRA">SERGIO GUERRA</option>
+<option value="SERGIO ZVEITER">SERGIO ZVEITER</option>
+<option value="SEVERINO NINHO">SEVERINO NINHO</option>
+<option value="SIBÃ MACHADO">SIBÃ MACHADO</option>
+<option value="SIMPLÃCIO ARAÃšJO">SIMPLÃCIO ARAÃšJO</option>
+<option value="STEFANO AGUIAR">STEFANO AGUIAR</option>
+<option value="STEPAN NERCESSIAN">STEPAN NERCESSIAN</option>
+<option value="TAUMATURGO LIMA">TAUMATURGO LIMA</option>
+<option value="TERESA SURITA">TERESA SURITA</option>
+<option value="THIAGO PEIXOTO">THIAGO PEIXOTO</option>
+<option value="TIRIRICA">TIRIRICA</option>
+<option value="TONINHO PINHEIRO">TONINHO PINHEIRO</option>
+<option value="VALDIVINO DE OLIVEIRA">VALDIVINO DE OLIVEIRA</option>
+<option value="VALMIR ASSUNÃ‡ÃƒO">VALMIR ASSUNÃ‡ÃƒO</option>
+<option value="VANDERLEI SIRAQUE">VANDERLEI SIRAQUE</option>
+<option value="VAZ DE LIMA">VAZ DE LIMA</option>
+<option value="VICENTE CANDIDO">VICENTE CANDIDO</option>
+<option value="VICENTE SELISTRE">VICENTE SELISTRE</option>
+<option value="VILALBA">VILALBA</option>
+<option value="VILMAR ROCHA">VILMAR ROCHA</option>
+<option value="VINICIUS GURGEL">VINICIUS GURGEL</option>
+<option value="VITOR PAULO">VITOR PAULO</option>
+<option value="WALDENOR PEREIRA">WALDENOR PEREIRA</option>
+<option value="WALNEY ROCHA">WALNEY ROCHA</option>
+<option value="WALTER TOSTA">WALTER TOSTA</option>
+<option value="WASHINGTON REIS">WASHINGTON REIS</option>
+<option value="WELITON PRADO">WELITON PRADO</option>
+<option value="WEVERTON ROCHA">WEVERTON ROCHA</option>
+<option value="WILLIAM DIB">WILLIAM DIB</option>
+<option value="WILSON FILHO">WILSON FILHO</option>
+<option value="ZÃ‰ SILVA">ZÃ‰ SILVA</option>
+<option value="ZECA DIRCEU">ZECA DIRCEU</option>
+<option value="ZOINHO">ZOINHO</option>
+<option value="LIDERANÃ‡A DO PSDB">LIDERANÃ‡A DO PSDB</option>
+<option value="LIDERANÃ‡A DO PT">LIDERANÃ‡A DO PT</option>
+<option value="AFONSO FLORENCE">AFONSO FLORENCE</option>
+<option value="DANILO CABRAL">DANILO CABRAL</option>
+<option value="DR. DILSON DRUMOND">DR. DILSON DRUMOND</option>
+<option value="DR. LUIZ FERNANDO">DR. LUIZ FERNANDO</option>
+<option value="GERA ARRUDA">GERA ARRUDA</option>
+<option value="ISAIAS SILVESTRE">ISAIAS SILVESTRE</option>
+<option value="JOÃƒO CALDAS">JOÃƒO CALDAS</option>
+<option value="MÃRIO FEITOZA">MÃRIO FEITOZA</option>
+<option value="PAULO FERREIRA">PAULO FERREIRA</option>
+<option value="PAULO MARINHO JUNIOR">PAULO MARINHO JUNIOR</option>
+<option value="PROFESSOR SÃ‰RGIO DE OLIVEIRA">PROFESSOR SÃ‰RGIO DE OLIVEIRA</option>
+<option value="RICARDO ARCHER">RICARDO ARCHER</option>
+<option value="TELMA PINHEIRO">TELMA PINHEIRO</option>
+<option value="VALRY MORAIS">VALRY MORAIS</option>
+<option value="ZE CARLOS DA PESCA">ZE CARLOS DA PESCA</option>
+<option value="AKIRA OTSUBO">AKIRA OTSUBO</option>
+<option value="ALEXANDRE TOLEDO">ALEXANDRE TOLEDO</option>
+<option value="AMIR LANDO">AMIR LANDO</option>
+<option value="CELSO JACOB">CELSO JACOB</option>
+<option value="EURICO JÃšNIOR">EURICO JÃšNIOR</option>
+<option value="FABIO REIS">FABIO REIS</option>
+<option value="FRANCISCO CHAGAS">FRANCISCO CHAGAS</option>
+<option value="GOIACIARA CRUZ">GOIACIARA CRUZ</option>
+<option value="HELCIO SILVA">HELCIO SILVA</option>
+<option value="ILÃRIO MARQUES">ILÃRIO MARQUES</option>
+<option value="LEOMAR QUINTANILHA">LEOMAR QUINTANILHA</option>
+<option value="LUIZ DE DEUS">LUIZ DE DEUS</option>
+<option value="MANUEL ROSA NECA">MANUEL ROSA NECA</option>
+<option value="MARGARIDA SALOMÃƒO">MARGARIDA SALOMÃƒO</option>
+<option value="NILMÃRIO MIRANDA">NILMÃRIO MIRANDA</option>
+<option value="OLIVEIRA FILHO">OLIVEIRA FILHO</option>
+<option value="PAULÃƒO">PAULÃƒO</option>
+<option value="PEDRO GUERRA">PEDRO GUERRA</option>
+<option value="PLÃNIO VALÃ‰RIO">PLÃNIO VALÃ‰RIO</option>
+<option value="RENATO ANDRADE">RENATO ANDRADE</option>
+<option value="RENATO SIMÃ•ES">RENATO SIMÃ•ES</option>
+<option value="RICARDO ARRUDA">RICARDO ARRUDA</option>
+<option value="PDT">PDT</option>
+<option value="BALEIA ROSSI">BALEIA ROSSI</option>
+<option value="DENILSON TEIXEIRA">DENILSON TEIXEIRA</option>
+<option value="DUDU LUIZ EDUARDO">DUDU LUIZ EDUARDO</option>
+<option value="FRANCISCO DE ASSIS">FRANCISCO DE ASSIS</option>
+<option value="GUSTAVO PETTA">GUSTAVO PETTA</option>
+<option value="JHC">JHC</option>
+<option value="MARIA LUCIA PRANDI">MARIA LUCIA PRANDI</option>
+<option value="ROSY DE SOUSA">ROSY DE SOUSA</option>
+<option value="SUBTENENTE GONZAGA">SUBTENENTE GONZAGA</option>
+<option value="SDD">SDD</option>
+<option value="PROS">PROS</option>
+<option value="ABEL MESQUITA JR.">ABEL MESQUITA JR.</option>
+<option value="ADAIL CARNEIRO">ADAIL CARNEIRO</option>
+<option value="ADALBERTO CAVALCANTI">ADALBERTO CAVALCANTI</option>
+<option value="ADELMO CARNEIRO LEÃƒO">ADELMO CARNEIRO LEÃƒO</option>
+<option value="ADELSON BARRETO">ADELSON BARRETO</option>
+<option value="ADILTON SACHETTI">ADILTON SACHETTI</option>
+<option value="AFONSO MOTTA">AFONSO MOTTA</option>
+<option value="ALAN RICK">ALAN RICK</option>
+<option value="ALEX MANENTE">ALEX MANENTE</option>
+<option value="ALEXANDRE BALDY">ALEXANDRE BALDY</option>
+<option value="ALEXANDRE SERFIOTIS">ALEXANDRE SERFIOTIS</option>
+<option value="ALEXANDRE VALLE">ALEXANDRE VALLE</option>
+<option value="ALFREDO NASCIMENTO">ALFREDO NASCIMENTO</option>
+<option value="ALIEL MACHADO">ALIEL MACHADO</option>
+<option value="ALTINEU CÃ”RTES">ALTINEU CÃ”RTES</option>
+<option value="ALUISIO MENDES">ALUISIO MENDES</option>
+<option value="ANA PERUGINI">ANA PERUGINI</option>
+<option value="ANDRÃ‰ ABDON">ANDRÃ‰ ABDON</option>
+<option value="ANDRÃ‰ FUFUCA">ANDRÃ‰ FUFUCA</option>
+<option value="ANDRES SANCHEZ">ANDRES SANCHEZ</option>
+<option value="ANGELA ALBINO">ANGELA ALBINO</option>
+<option value="ANGELIM">ANGELIM</option>
+<option value="ANTÃ”NIO JÃCOME">ANTÃ”NIO JÃCOME</option>
+<option value="ARTHUR VIRGÃLIO BISNETO">ARTHUR VIRGÃLIO BISNETO</option>
+<option value="BACELAR">BACELAR</option>
+<option value="BEBETO">BEBETO</option>
+<option value="BENITO GAMA">BENITO GAMA</option>
+<option value="BETINHO GOMES">BETINHO GOMES</option>
+<option value="BETO ROSADO">BETO ROSADO</option>
+<option value="BETO SALAME">BETO SALAME</option>
+<option value="BRUNNY">BRUNNY</option>
+<option value="BRUNO COVAS">BRUNO COVAS</option>
+<option value="CABO DACIOLO">CABO DACIOLO</option>
+<option value="CABO SABINO">CABO SABINO</option>
+<option value="CABUÃ‡U BORGES">CABUÃ‡U BORGES</option>
+<option value="CACÃ LEÃƒO">CACÃ LEÃƒO</option>
+<option value="CAETANO">CAETANO</option>
+<option value="CAIO NARCIO">CAIO NARCIO</option>
+<option value="CAPITÃƒO AUGUSTO">CAPITÃƒO AUGUSTO</option>
+<option value="CAPITÃƒO FÃBIO ABREU">CAPITÃƒO FÃBIO ABREU</option>
+<option value="CARLOS ANDRADE">CARLOS ANDRADE</option>
+<option value="CARLOS GOMES">CARLOS GOMES</option>
+<option value="CARLOS HENRIQUE GAGUIM">CARLOS HENRIQUE GAGUIM</option>
+<option value="CARLOS MARTINS">CARLOS MARTINS</option>
+<option value="CARLOS MARUN">CARLOS MARUN</option>
+<option value="CÃ‰LIO SILVEIRA">CÃ‰LIO SILVEIRA</option>
+<option value="CELSO PANSERA">CELSO PANSERA</option>
+<option value="CÃ‰SAR MESSIAS">CÃ‰SAR MESSIAS</option>
+<option value="CESAR SOUZA">CESAR SOUZA</option>
+<option value="CHRISTIANE DE SOUZA YARED">CHRISTIANE DE SOUZA YARED</option>
+<option value="CÃCERO ALMEIDA">CÃCERO ALMEIDA</option>
+<option value="CLARISSA GAROTINHO">CLARISSA GAROTINHO</option>
+<option value="CONCEIÃ‡ÃƒO SAMPAIO">CONCEIÃ‡ÃƒO SAMPAIO</option>
+<option value="COVATTI FILHO">COVATTI FILHO</option>
+<option value="CRISTIANE BRASIL">CRISTIANE BRASIL</option>
+<option value="DÃ‚MINA PEREIRA">DÃ‚MINA PEREIRA</option>
+<option value="DANIEL COELHO">DANIEL COELHO</option>
+<option value="DANIEL VILELA">DANIEL VILELA</option>
+<option value="DAVIDSON MAGALHÃƒES">DAVIDSON MAGALHÃƒES</option>
+<option value="DELEGADO Ã‰DER MAURO">DELEGADO Ã‰DER MAURO</option>
+<option value="DELEGADO EDSON MOREIRA">DELEGADO EDSON MOREIRA</option>
+<option value="DEOCLIDES MACEDO">DEOCLIDES MACEDO</option>
+<option value="DIEGO GARCIA">DIEGO GARCIA</option>
+<option value="DR. JOÃƒO">DR. JOÃƒO</option>
+<option value="DR. SINVAL MALHEIROS">DR. SINVAL MALHEIROS</option>
+<option value="DULCE MIRANDA">DULCE MIRANDA</option>
+<option value="EDMILSON RODRIGUES">EDMILSON RODRIGUES</option>
+<option value="EDUARDO BOLSONARO">EDUARDO BOLSONARO</option>
+<option value="EDUARDO CURY">EDUARDO CURY</option>
+<option value="ELIZEU DIONIZIO">ELIZEU DIONIZIO</option>
+<option value="ELIZIANE GAMA">ELIZIANE GAMA</option>
+<option value="ELMAR NASCIMENTO">ELMAR NASCIMENTO</option>
+<option value="ENIO VERRI">ENIO VERRI</option>
+<option value="EVAIR VIEIRA DE MELO">EVAIR VIEIRA DE MELO</option>
+<option value="EVANDRO GUSSI">EVANDRO GUSSI</option>
+<option value="EVANDRO ROMAN">EVANDRO ROMAN</option>
+<option value="EXPEDITO NETTO">EXPEDITO NETTO</option>
+<option value="EZEQUIEL FONSECA">EZEQUIEL FONSECA</option>
+<option value="EZEQUIEL TEIXEIRA">EZEQUIEL TEIXEIRA</option>
+<option value="FABIANO HORTA">FABIANO HORTA</option>
+<option value="FABIO GARCIA">FABIO GARCIA</option>
+<option value="FÃBIO MITIDIERI">FÃBIO MITIDIERI</option>
+<option value="FÃBIO SOUSA">FÃBIO SOUSA</option>
+<option value="FABRICIO OLIVEIRA">FABRICIO OLIVEIRA</option>
+<option value="FAUSTO PINATO">FAUSTO PINATO</option>
+<option value="FERNANDO MONTEIRO">FERNANDO MONTEIRO</option>
+<option value="FERNANDO ZACHIA">FERNANDO ZACHIA</option>
+<option value="FLAVINHO">FLAVINHO</option>
+<option value="FLAVIO NOGUEIRA">FLAVIO NOGUEIRA</option>
+<option value="FLORIANO PESARO">FLORIANO PESARO</option>
+<option value="FRANCISCO CHAPADINHA">FRANCISCO CHAPADINHA</option>
+<option value="FRANKLIN">FRANKLIN</option>
+<option value="GEOVANIA DE SÃ">GEOVANIA DE SÃ</option>
+<option value="GILBERTO COUTINHO">GILBERTO COUTINHO</option>
+<option value="GILBERTO NASCIMENTO">GILBERTO NASCIMENTO</option>
+<option value="GIOVANI FELTES">GIOVANI FELTES</option>
+<option value="GIUSEPPE VECCI">GIUSEPPE VECCI</option>
+<option value="GIVALDO VIEIRA">GIVALDO VIEIRA</option>
+<option value="GOULART">GOULART</option>
+<option value="HEITOR SCHUCH">HEITOR SCHUCH</option>
+<option value="HELDER SALOMÃƒO">HELDER SALOMÃƒO</option>
+<option value="HÃ‰LIO LEITE">HÃ‰LIO LEITE</option>
+<option value="HERÃCLITO FORTES">HERÃCLITO FORTES</option>
+<option value="HERCULANO PASSOS">HERCULANO PASSOS</option>
+<option value="HILDO ROCHA">HILDO ROCHA</option>
+<option value="HIRAN GONÃ‡ALVES">HIRAN GONÃ‡ALVES</option>
+<option value="HISSA ABRAHÃƒO">HISSA ABRAHÃƒO</option>
+<option value="HUMBERTO MICHILES">HUMBERTO MICHILES</option>
+<option value="IRMÃƒO LAZARO">IRMÃƒO LAZARO</option>
+<option value="JARBAS VASCONCELOS">JARBAS VASCONCELOS</option>
+<option value="JÃ‰SSICA SALES">JÃ‰SSICA SALES</option>
+<option value="JOÃƒO CASTELO">JOÃƒO CASTELO</option>
+<option value="JOÃƒO DANIEL">JOÃƒO DANIEL</option>
+<option value="JOÃƒO DERLY">JOÃƒO DERLY</option>
+<option value="JOÃƒO FERNANDO COUTINHO">JOÃƒO FERNANDO COUTINHO</option>
+<option value="JOÃƒO GUALBERTO">JOÃƒO GUALBERTO</option>
+<option value="JOÃƒO MARCELO SOUZA">JOÃƒO MARCELO SOUZA</option>
+<option value="JOÃƒO PAULO KLEINÃœBING">JOÃƒO PAULO KLEINÃœBING</option>
+<option value="JOÃƒO PAULO PAPA">JOÃƒO PAULO PAPA</option>
+<option value="JOAQUIM PASSARINHO">JOAQUIM PASSARINHO</option>
+<option value="JONY MARCOS">JONY MARCOS</option>
+<option value="JORGE SOLLA">JORGE SOLLA</option>
+<option value="JOSÃ‰ FOGAÃ‡A">JOSÃ‰ FOGAÃ‡A</option>
+<option value="JOSÃ‰ REINALDO">JOSÃ‰ REINALDO</option>
+<option value="JOSI NUNES">JOSI NUNES</option>
+<option value="JOZI ARAÃšJO">JOZI ARAÃšJO</option>
+<option value="JÃšLIA MARINHO">JÃšLIA MARINHO</option>
+<option value="JUNIOR MARRECA">JUNIOR MARRECA</option>
+<option value="JUSCELINO FILHO">JUSCELINO FILHO</option>
+<option value="KAIO MANIÃ‡OBA">KAIO MANIÃ‡OBA</option>
+<option value="LAUDIVIO CARVALHO">LAUDIVIO CARVALHO</option>
+<option value="LAURA CARNEIRO">LAURA CARNEIRO</option>
+<option value="LEANDRE">LEANDRE</option>
+<option value="LEO DE BRITO">LEO DE BRITO</option>
+<option value="LÃ‰O OLIVEIRA">LÃ‰O OLIVEIRA</option>
+<option value="LEÃ”NIDAS CRISTINO">LEÃ”NIDAS CRISTINO</option>
+<option value="LUCAS VERGILIO">LUCAS VERGILIO</option>
+<option value="LUCIANO DUCCI">LUCIANO DUCCI</option>
+<option value="LUCIO MOSQUINI">LUCIO MOSQUINI</option>
+<option value="LUIZ CARLOS RAMOS">LUIZ CARLOS RAMOS</option>
+<option value="LUIZ CLÃUDIO">LUIZ CLÃUDIO</option>
+<option value="LUIZ LAURO FILHO">LUIZ LAURO FILHO</option>
+<option value="LUIZIANNE LINS">LUIZIANNE LINS</option>
+<option value="MACEDO">MACEDO</option>
+<option value="MAJOR OLIMPIO">MAJOR OLIMPIO</option>
+<option value="MANOEL ANTUNES">MANOEL ANTUNES</option>
+<option value="MARCELINHO CARIOCA">MARCELINHO CARIOCA</option>
+<option value="MARCELO ÃLVARO ANTÃ”NIO">MARCELO ÃLVARO ANTÃ”NIO</option>
+<option value="MARCELO ARO">MARCELO ARO</option>
+<option value="MARCELO BELINATI">MARCELO BELINATI</option>
+<option value="MARCELO SQUASSONI">MARCELO SQUASSONI</option>
+<option value="MARCIO ALVINO">MARCIO ALVINO</option>
+<option value="MÃRCIO BIOLCHI">MÃRCIO BIOLCHI</option>
+<option value="MARCIO MONTEIRO">MARCIO MONTEIRO</option>
+<option value="MARCO ANTÃ”NIO CABRAL">MARCO ANTÃ”NIO CABRAL</option>
+<option value="MARCOS ABRÃƒO">MARCOS ABRÃƒO</option>
+<option value="MARCOS REATEGUI">MARCOS REATEGUI</option>
+<option value="MARCOS ROTTA">MARCOS ROTTA</option>
+<option value="MARCOS SOARES">MARCOS SOARES</option>
+<option value="MARCUS VICENTE">MARCUS VICENTE</option>
+<option value="MARIANA CARVALHO">MARIANA CARVALHO</option>
+<option value="MARINALDO ROSENDO">MARINALDO ROSENDO</option>
+<option value="MÃRIO NEGROMONTE JR.">MÃRIO NEGROMONTE JR.</option>
+<option value="MARQUINHO MENDES">MARQUINHO MENDES</option>
+<option value="MARX BELTRÃƒO">MARX BELTRÃƒO</option>
+<option value="MASSAMI MIKI">MASSAMI MIKI</option>
+<option value="MAURÃCIO ALMEIDA">MAURÃCIO ALMEIDA</option>
+<option value="MAURO PEREIRA">MAURO PEREIRA</option>
+<option value="MAX FILHO">MAX FILHO</option>
+<option value="MERLONG SOLANO">MERLONG SOLANO</option>
+<option value="MIGUEL HADDAD">MIGUEL HADDAD</option>
+<option value="MIGUEL LOMBARDI">MIGUEL LOMBARDI</option>
+<option value="MISAEL VARELLA">MISAEL VARELLA</option>
+<option value="MOEMA GRAMACHO">MOEMA GRAMACHO</option>
+<option value="MORONI TORGAN">MORONI TORGAN</option>
+<option value="MOSES RODRIGUES">MOSES RODRIGUES</option>
+<option value="NELSON NAHIM">NELSON NAHIM</option>
+<option value="NEWTON CARDOSO JR">NEWTON CARDOSO JR</option>
+<option value="NILTO TATTO">NILTO TATTO</option>
+<option value="ODORICO MONTEIRO">ODORICO MONTEIRO</option>
+<option value="ORLANDO SILVA">ORLANDO SILVA</option>
+<option value="OSMAR BERTOLDI">OSMAR BERTOLDI</option>
+<option value="OSVALDO COELHO">OSVALDO COELHO</option>
+<option value="PAULO AZI">PAULO AZI</option>
+<option value="PEDRO CUNHA LIMA">PEDRO CUNHA LIMA</option>
+<option value="PEDRO VILELA">PEDRO VILELA</option>
+<option value="PINTO DE LUNA">PINTO DE LUNA</option>
+<option value="RAFAEL MOTTA">RAFAEL MOTTA</option>
+<option value="RAQUEL MUNIZ">RAQUEL MUNIZ</option>
+<option value="REJANE DIAS">REJANE DIAS</option>
+<option value="REMÃDIO MONAI">REMÃDIO MONAI</option>
+<option value="RENATA ABREU">RENATA ABREU</option>
+<option value="RICARDO TEOBALDO">RICARDO TEOBALDO</option>
+<option value="ROBERTO GÃ“ES">ROBERTO GÃ“ES</option>
+<option value="ROBERTO SALES">ROBERTO SALES</option>
+<option value="ROCHA">ROCHA</option>
+<option value="RODRIGO MARTINS">RODRIGO MARTINS</option>
+<option value="RODRIGO PACHECO">RODRIGO PACHECO</option>
+<option value="ROGÃ‰RIO ROSSO">ROGÃ‰RIO ROSSO</option>
+<option value="RONALDO CARLETTO">RONALDO CARLETTO</option>
+<option value="RONALDO LESSA">RONALDO LESSA</option>
+<option value="RONALDO MARTINS">RONALDO MARTINS</option>
+<option value="RÃ”NEY NEMER">RÃ”NEY NEMER</option>
+<option value="ROSÃ‚NGELA CURADO">ROSÃ‚NGELA CURADO</option>
+<option value="ROSANGELA GOMES">ROSANGELA GOMES</option>
+<option value="ROSSONI">ROSSONI</option>
+<option value="RUBENS PEREIRA JÃšNIOR">RUBENS PEREIRA JÃšNIOR</option>
+<option value="SAMUEL MOREIRA">SAMUEL MOREIRA</option>
+<option value="SEBASTIÃƒO OLIVEIRA">SEBASTIÃƒO OLIVEIRA</option>
+<option value="SÃ‰RGIO REIS">SÃ‰RGIO REIS</option>
+<option value="SERGIO SOUZA">SERGIO SOUZA</option>
+<option value="SERGIO VIDIGAL">SERGIO VIDIGAL</option>
+<option value="SHÃ‰RIDAN">SHÃ‰RIDAN</option>
+<option value="SILAS FREIRE">SILAS FREIRE</option>
+<option value="SIMONE MORGADO">SIMONE MORGADO</option>
+<option value="SORAYA SANTOS">SORAYA SANTOS</option>
+<option value="SÃ“STENES CAVALCANTE">SÃ“STENES CAVALCANTE</option>
+<option value="TADEU ALENCAR">TADEU ALENCAR</option>
+<option value="TENENTE LÃšCIO">TENENTE LÃšCIO</option>
+<option value="TEREZA CRISTINA">TEREZA CRISTINA</option>
+<option value="TIA ERON">TIA ERON</option>
+<option value="TONINHO WANDSCHEER">TONINHO WANDSCHEER</option>
+<option value="ULDURICO JUNIOR">ULDURICO JUNIOR</option>
+<option value="VALMIR PRASCIDELLI">VALMIR PRASCIDELLI</option>
+<option value="VENEZIANO VITAL DO RÃŠGO">VENEZIANO VITAL DO RÃŠGO</option>
+<option value="VICENTINHO JÃšNIOR">VICENTINHO JÃšNIOR</option>
+<option value="VICTOR MENDES">VICTOR MENDES</option>
+<option value="VITOR LIPPI">VITOR LIPPI</option>
+<option value="VITOR VALIM">VITOR VALIM</option>
+<option value="WADIH DAMOUS">WADIH DAMOUS</option>
+<option value="WADSON RIBEIRO">WADSON RIBEIRO</option>
+<option value="WALTER ALVES">WALTER ALVES</option>
+<option value="WELLINGTON SALGADO">WELLINGTON SALGADO</option>
+<option value="WILSON BESERRA">WILSON BESERRA</option>
+<option value="ZÃ‰ AUGUSTO NALIN">ZÃ‰ AUGUSTO NALIN</option>
+<option value="ZÃ‰ CARLOS">ZÃ‰ CARLOS</option>
+<option value="ZECA CAVALCANTI">ZECA CAVALCANTI</option>
+<option value="ZECA DO PT">ZECA DO PT</option>
+<option value="ZENAIDE MAIA">ZENAIDE MAIA</option>
+<option value="ANDRÃ‰ AMARAL">ANDRÃ‰ AMARAL</option>
+<option value="ÃTILA A. NUNES">ÃTILA A. NUNES</option>
+<option value="BOSCO COSTA">BOSCO COSTA</option>
+<option value="CAJAR NARDES">CAJAR NARDES</option>
+<option value="CREUZA PEREIRA">CREUZA PEREIRA</option>
+<option value="GUILHERME COELHO">GUILHERME COELHO</option>
+<option value="ILDON MARQUES">ILDON MARQUES</option>
+<option value="JONES MARTINS">JONES MARTINS</option>
+<option value="LUANA COSTA">LUANA COSTA</option>
+<option value="MOISÃ‰S DINIZ">MOISÃ‰S DINIZ</option>
+<option value="NIVALDO ALBUQUERQUE">NIVALDO ALBUQUERQUE</option>
+<option value="PASTOR LUCIANO BRAGA">PASTOR LUCIANO BRAGA</option>
+<option value="PATRUS ANANIAS">PATRUS ANANIAS</option>
+<option value="PAULO MARTINS">PAULO MARTINS</option>
+<option value="POLLYANA GAMA">POLLYANA GAMA</option>
+<option value="RICARDO BENTINHO">RICARDO BENTINHO</option>
+<option value="TAMPINHA">TAMPINHA</option>
+<option value="VAL AMÃ‰LIO">VAL AMÃ‰LIO</option>
+<option value="PHS">PHS</option>
+<option value="PTN">PTN</option>
+<option value="PSOL">PSOL</option>
+<option value="LID.GOV-CD">LID.GOV-CD</option>
+<option value="ADÃ‰RMIS MARINI">ADÃ‰RMIS MARINI</option>
+<option value="DEJORGE PATRÃCIO">DEJORGE PATRÃCIO</option>
+<option value="FELIPE CARRERAS">FELIPE CARRERAS</option>
+<option value="IZAQUE SILVA">IZAQUE SILVA</option>
+<option value="LOURIVAL GOMES">LOURIVAL GOMES</option>
+<option value="LUCIANO BIVAR">LUCIANO BIVAR</option>
+<option value="LUZIA FERREIRA">LUZIA FERREIRA</option>
+<option value="MARCELO DELAROLI">MARCELO DELAROLI</option>
+<option value="NORMA AYUB">NORMA AYUB</option>
+<option value="ROBINSON ALMEIDA">ROBINSON ALMEIDA</option>
+<option value="VAIDON OLIVEIRA">VAIDON OLIVEIRA</option>
+<option value="XUXU DAL MOLIN">XUXU DAL MOLIN</option>
+<option value="YEDA CRUSIUS">YEDA CRUSIUS</option>
+<option value="LID.GOV-CN">LID.GOV-CN</option>
+<option value="PODE">PODE</option></select>
+                        <script type="application/json" data-for="parl" data-nonempty="">{}</script>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="shiny-html-output col-sm-6" id="partido"></div>
+              <div class="shiny-html-output col-sm-6" id="estado"></div>
+              <div class="shiny-html-output col-sm-6" id="totalbox"></div>
+              <div class="shiny-html-output col-sm-6" id="diffbox"></div>
+              <div class="shiny-html-output col-sm-6" id="distbox"></div>
+              <div class="shiny-html-output col-sm-6" id="percentildiffbox"></div>
+              <div class="col-sm-12">
+                <div class="box box-warning">
+                  <div class="box-header">
+                    <h3 class="box-title">Empresas que o deputado mais pede reembolsos</h3>
+                  </div>
+                  <div class="box-body">
+                    <div id="gasto_tree" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="box box-warning">
+                  <div class="box-header">
+                    <h3 class="box-title">Valor total reembolsado e pedido por ano em R$</h3>
+                  </div>
+                  <div class="box-body">
+                    <div id="diferenca_graf" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="box box-warning">
+                  <div class="box-header">
+                    <h3 class="box-title">Top 10 tipos de gastos:</h3>
+                  </div>
+                  <div class="box-body">
+                    <div id="top_10gastos" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="box box-warning">
+                  <div class="box-header">
+                    <h3 class="box-title">Top 10 empresas em que o deputado mais pede reembolso:</h3>
+                  </div>
+                  <div class="box-body">
+                    <div id="top_10empresas" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="box box-warning">
+                  <div class="box-body">
+                    <div id="tabela" class="shiny-datatable-output"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="box">
+                  <div class="box-body">
+                    <a id="downloadData" class="btn btn-default shiny-download-link " href="" target="_blank" download>
+                      <i class="fa fa-download"></i>
+                      download
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="shiny-tab-sobre">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="nav-tabs-custom" style="height: 250px">
+                  <ul class="nav nav-tabs pull-right" data-tabsetid="7893">
+                    <li>
+                      <a href="#tab-7893-1" data-toggle="tab" data-value="Motivação">Motivação</a>
+                    </li>
+                    <li class="active">
+                      <a href="#tab-7893-2" data-toggle="tab" data-value="Desenvolvedores">Desenvolvedores</a>
+                    </li>
+                    <li>
+                      <a href="#tab-7893-3" data-toggle="tab" data-value="Projeto">Projeto</a>
+                    </li>
+                    <li class="header pull-left">Sobre:</li>
+                  </ul>
+                  <div class="tab-content" data-tabsetid="7893">
+                    <div class="tab-pane" data-value="Motivação" id="tab-7893-1">Alem do salário, os deputados federais tem o direito de pedir o reembolso de gastos com alimentação, combustível, locação de veículos, passagens aéreas, material de escritório e divulgação da atividade parlamentar.
+                           Com esta plataforma, esperamos oferecer uma maneira fácil e prática de acompanhar como um determinado deputado está gastando estes recursos</div>
+                    <div class="tab-pane active" data-value="Desenvolvedores" align="left" id="tab-7893-2">
+                      <h2>Marcus Alexandre Nunes</h2>
+                       Doutor em Estatística pela Penn State University
+                      <br/>
+                      Mestre em Matemática Pura pela Universidade Federal do Rio Grande do Sul
+                      <br/>
+                      Bacharel em Matemática Aplicada e Computacional pela Universidade Federal do Rio Grande do Sul
+                      <br/>
+                      <a>http://marcusnunes.me</a>
+                      <br/>
+                      <a>https://github.com/mnunes</a>
+                      <br/>
+                      <h2>Rayland Matos Magalhães</h2>
+                      Graduando em Estatística pela Universidade Federal do Rio Grande do Norte
+                      <br/>
+                      <a>https://github.com/raylandmagalhaes</a>
+                    </div>
+                    <div class="tab-pane" data-value="Projeto" id="tab-7893-3">
+                      Esta plataforma é um projeto de iniciação científica que tem como orientador o professor
+                      <strong>MARCUS ALEXANDRE NUNES</strong>
+                      e como discente voluntário, o aluno de graduação
+                      <strong>RAYLAND MATOS MAGALHÃES</strong>
+                       (vide aba 'Desenvolvedores') 
+                      <br/>
+                      <br/>
+                      <p>A Lei de Acesso à informação, promulgada em 16 de maio de 2012, trouxe uma quantidade de informação sem precedentes para a sociedade brasileira. Através dela, os órgãos públicos integrantes da administração direta dos Poderes Executivo, Legislativo, incluindo as Cortes de Contas, e Judiciário e do Ministério Público devem informar seus gastos com material, salários, licitações e tudo o mais que envolver dinheiro público.</p>
+                      <p>A Câmara dos Deputados mantém registrados todos os pedidos de reembolsos feitos pelos deputados federais desde 2009. Até o final de 2017 eram 3.099.310 de pedidos de reembolso catalogados. Embora os dados estejam disponíveis para quem quiser acessá-los, eles nem sempre estão acessíveis, pois a maneira com a qual estão organizados demanda um grande conhecimento técnico para que sejam extraídos e analisados. Assim, a maior parte da população não consegue ter acesso a eles.</p>
+                      <p>Um primeiro passo no sentido de tornar estes dados acessíveis foi dado pela Operação Serenata de Amor, parte da iniciativa Open Knowledge Brasil. Esta Operação recolheu os dados referentes aos pedidos de reembolsos dos deputados federais e tornou-os acessíveis através de um módulo escrito em python (Python Software Foundation, 2017). Nunes (2018) utilizou este módulo para criar um pacote em R (R Core Team, 2018) com os dados coletados e compactados, a fim de deixar estas informações mais difundidas na sociedade.</p>
+                      <p>Entretanto, mesmo com os dados disponíveis para duas linguagens de programação, pessoas que não tem conhecimento em python ou R continuam sem ter acesso a estes dados. Desta forma, a maior parte da população brasileira não tem acesso ao controle dos gastos dos deputados eleitos.</p>
+                      <p>Este projeto vem preencher exatamente esta lacuna. Desejamos criar uma interface point and click que permita ao usuário filtrar, classificar e baixar os dados que ele deseja analisar ou conferir. O usuário poderá filtrar os gastos por tipo (refeição, passagem aérea, publicidade etc.), por partido, por estado do parlamentar e muitas outras variáveis. Depois da filtragem realizada, estes dados podem ser baixados e utilizados em outras pesquisas das mais diversas áreas. Ou apenas para controle da população sobre os gastos dos seus representantes no legislativo.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+
+</html>
+
+     </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+
+</html>
