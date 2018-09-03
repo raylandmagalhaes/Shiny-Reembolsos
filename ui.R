@@ -36,10 +36,10 @@ dashboardPage(
                 box(status = "warning",title="Valor total reembolsado e pedido por ano em R$",width = 12,
                     plotOutput('diferenca_graf')),
                 
-                box(status = "warning",title="Top 10 tipos de gastos:",width = 12,
+                box(status = "warning",title="Top 10 tipos de gastos:",width = 12, height=700,
                     plotlyOutput('top_10gastos')),
                 
-                box(status = "warning",title="Top 10 empresas em que o deputado mais pede reembolso:",width = 12,
+                box(status = "warning",title="Top 10 empresas em que o deputado mais pede reembolso:",width = 12, height=700,
                     plotlyOutput('top_10empresas')),
                 
                 box( width = 12, status = "warning",
