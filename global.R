@@ -1,6 +1,6 @@
 library(reembolsos)
 library(tidyverse)
-library(ggplot2)
+library(plotly)
 library(shinydashboard)
 library(treemap)
 library(gridExtra)
