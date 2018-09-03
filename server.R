@@ -5,6 +5,7 @@ function(input, output, session) {
       filter(congressperson_name==input$parl)%>%
       group_by(Tipo_de_Gasto)%>%
       summarise(Valor_Total=sum(total_net_value))%>%
+      mutate(Tipo_de_Gasto=strtrim(Tipo_de_Gasto,20))%>%
       top_n(10)
     
   })
@@ -27,6 +28,7 @@ function(input, output, session) {
       filter(congressperson_name==input$parl)%>%
       group_by(Empresa)%>%
       summarise(Valor_Total=sum(total_net_value))%>%
+      mutate(Empresa=strtrim(Empresa,20))%>%
       top_n(10)
     
   })
