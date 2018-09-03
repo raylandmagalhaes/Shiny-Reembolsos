@@ -1,0 +1,7 @@
+library(reembolsos)
+library(tidyverse)
+library(plotly)
+library(shinydashboard)
+library(treemap)
+library(gridExtra)
+library(scales)
