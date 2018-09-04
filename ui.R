@@ -70,7 +70,9 @@ dashboardPage(
                            a("https://marcusnunes.me", href="https://marcusnunes.me", target="_blank"),br(),
                            a("https://github.com/mnunes", href="https://github.com/mnunes", target="_blank"),
                            br(),
-                           h2("Rayland Matos Magalhães"),"Graduando em Estatística pela Universidade Federal do Rio Grande do Norte",br(),a("https://github.com/raylandmagalhaes", href="https://github.com/raylandmagalhaes", target="_blank")),
+                           h2("Rayland Matos Magalhães"),"Graduando em Estatística pela Universidade Federal do Rio Grande do Norte",br(),a("https://github.com/raylandmagalhaes", href="https://github.com/raylandmagalhaes", target="_blank"),
+                           br(),
+                           h2("Serenata de Amor"),"Este trabalho não teria sido possível sem as ferramentas de coleta de dados públicos desenvolvidas pelo Projeto Serenata de Amor",br(),a("https://serenata.ai/", href="https://serenata.ai/", target="_blank")),
                   
                   tabPanel("Projeto","Esta plataforma é um projeto de iniciação científica que tem como orientador o professor", strong("MARCUS ALEXANDRE NUNES"), "e como discente voluntário, o aluno de graduação", strong("RAYLAND MATOS MAGALHÃES")," (vide aba 'Desenvolvedores') ",br(),br(),
                            p("A Lei de Acesso à informação, promulgada em 16 de maio de 2012, trouxe uma quantidade de informação sem precedentes para a sociedade brasileira. Através dela, os órgãos públicos integrantes da administração direta dos Poderes Executivo, Legislativo, incluindo as Cortes de Contas, e Judiciário e do Ministério Público devem informar seus gastos com material, salários, licitações e tudo o mais que envolver dinheiro público."),
