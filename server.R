@@ -95,7 +95,7 @@ function(input, output, session) {
       geom_point()+
       theme_minimal()+
       scale_x_continuous(breaks = seq(min(camara$year), max(camara$year), by = 1))+
-      labs(fill="situação" ,y="Valor total(R$)")+
+      labs(fill="Situação", x="Ano", y="Valor Total (R$)")+
       theme(axis.text.x = element_text(angle = 0, hjust = 1, vjust = 0.5))
   })
   
@@ -147,7 +147,7 @@ function(input, output, session) {
       filter(congressperson_name==input$parl)%>%
       select(congressperson_name,total_net_value,document_value)%>%
       summarise(soma=abs(sum(total_net_value)-sum(document_value)))
-    valueBox(subtitle=paste0("dos deputados tem uma discrepancia entre o valor solicitado e valor recebido MENOR que ", input$parl ),
+    valueBox(subtitle=paste0("dos deputados tem uma discrepância entre o valor solicitado e valor recebido MENOR que ", input$parl ),
              value=paste0(round((percentile_dif(q$soma))*100,2),"%"),
              icon = icon("balance-scale",lib = "font-awesome"),
              color = "light-blue"
