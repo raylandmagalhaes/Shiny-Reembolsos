@@ -95,7 +95,7 @@ function(input, output, session) {
       geom_point()+
       theme_minimal()+
       scale_x_continuous(breaks = seq(min(camara$year), max(camara$year), by = 1))+
-      labs(fill="Situação", x="Ano", y="Valor Total (R$)")+
+      labs(colour="Situação", x="Ano", y="Valor Total (R$)")+
       theme(axis.text.x = element_text(angle = 0, hjust = 1, vjust = 0.5))
   })
   
