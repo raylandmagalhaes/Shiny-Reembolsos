@@ -9,18 +9,18 @@ function(input, output, session) {
       top_n(10)
     
   })
-  output$top_10gastos <- renderPlotly({
+  output$top_10gastos <- renderPlot({
     legend_ord <- levels(with(top_10gastos(), reorder(Tipo_de_Gasto, -Valor_Total)))
     options(scipen=10000)
     
-    ggplotly(ggplot(top_10gastos(),aes(x=Tipo_de_Gasto))+
+    ggplot(top_10gastos(),aes(x=Tipo_de_Gasto))+
       geom_col(aes(reorder(Tipo_de_Gasto,-Valor_Total),Valor_Total,fill = Tipo_de_Gasto))+
       theme_minimal()+
       labs(fill="Tipo de gasto",y="Valor total(R$)")+
       theme(axis.title.x=element_blank(),axis.ticks.x=element_blank(),legend.position = "none", axis.text.x = element_text(angle = 90, hjust = 1))+
       scale_fill_discrete(breaks=legend_ord)
-    ,
-    height=600)
+    
+    
   })
   
   top_10empresas<-reactive({ camara%>%
@@ -33,16 +33,16 @@ function(input, output, session) {
     
   })
   
-  output$top_10empresas <- renderPlotly({
+  output$top_10empresas <- renderPlot({
     legend_ord <- levels(with(top_10empresas(), reorder(Empresa, -Valor_Total)))
     options(scipen=10000)
-    ggplotly(ggplot(top_10empresas(),aes(x=Empresa))+
+    ggplot(top_10empresas(),aes(x=Empresa))+
       geom_col(aes(reorder(Empresa,-Valor_Total),Valor_Total,fill = Empresa))+
       theme_minimal()+
       labs(fill="Fornecedor",y="Valor total(R$)")+
         theme(axis.title.x=element_blank(),axis.ticks.x=element_blank(),legend.position = "none", axis.text.x = element_text(angle = 90, hjust = 1))+
-      scale_fill_discrete(breaks=legend_ord),
-    height=600)
+      scale_fill_discrete(breaks=legend_ord)
+  
   })
   
   gasto_tree<-reactive({ camara%>%
