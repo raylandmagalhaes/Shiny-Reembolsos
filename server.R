@@ -66,7 +66,8 @@ function(input, output, session) {
   datasetInput <- reactive({
     camara%>%
       filter(congressperson_name==input$parl)%>%
-      select(Valor_Reembolsado=total_net_value,Tipo_de_gasto=subquota_description,Fornecedor=supplier,Data=issue_date)
+      select(Valor_Reembolsado=total_net_value,Tipo_de_gasto=subquota_description,Fornecedor=supplier,Data=issue_date) %>% 
+      data.frame
   })
   output$tabela <- renderDataTable(datasetInput())
   
@@ -141,13 +142,15 @@ function(input, output, session) {
       summarise(soma=abs(sum(total_net_value)-sum(document_value)))%>%
       arrange(soma)
     
+    
     percentile_dif <- ecdf(b$soma)
     
     q=camara%>%
       filter(congressperson_name==input$parl)%>%
       select(congressperson_name,total_net_value,document_value)%>%
       summarise(soma=abs(sum(total_net_value)-sum(document_value)))
-    valueBox(subtitle=paste0("dos deputados tem uma discrepância entre o valor solicitado e valor recebido MENOR que ", input$parl ),
+    
+    valueBox(subtitle=paste0("dos deputados tem uma discrepância entre o valor solicitado e valor recebido MENOR que ", input$parl),
              value=paste0(round((percentile_dif(q$soma))*100,2),"%"),
              icon = icon("balance-scale",lib = "font-awesome"),
              color = "light-blue"

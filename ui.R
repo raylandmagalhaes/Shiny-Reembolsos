@@ -18,7 +18,7 @@ dashboardPage(
               fluidRow(
                 box(width = 12,height = 100,status = "warning", title = "DIGITE O NOME DO SEU DEPUTADO FEDERAL:",
                     background = "light-blue",
-                    selectInput("parl",label = NULL, choices =unique(as.character(camara$congressperson_name)),selected="ABELARDO")),
+                    selectInput("parl",label = NULL, choices =unique(as.character(camara$congressperson_name)),selected=sample(unique(as.character(camara$congressperson_name)),1))),
                 
                 # box(width = 6,height = 100,status = "warning", title = "Total reembolsado:",
                 #     background = "light-blue",
