@@ -36,7 +36,7 @@ function(input, output, session) {
   output$top_10empresas <- renderPlot({
     legend_ord <- levels(with(top_10empresas(), reorder(Empresa, -Valor_Total)))
     options(scipen=10000)
-    ggplot(top_10empresas(),aes(x=Empresa))+
+    ggplot(top_10empresas())+
       geom_col(aes(reorder(Empresa,-Valor_Total),Valor_Total,fill = Empresa))+
       theme_minimal()+
       labs(fill="Fornecedor",y="Valor total(R$)")+
@@ -66,7 +66,8 @@ function(input, output, session) {
   datasetInput <- reactive({
     camara%>%
       filter(congressperson_name==input$parl)%>%
-      select(Valor_Reembolsado=total_net_value,Tipo_de_gasto=subquota_description,Fornecedor=supplier,Data=issue_date) %>% 
+      select(Valor_Reembolsado=total_net_value,Tipo_de_gasto=subquota_description,Fornecedor=supplier,Data=issue_date) %>%
+      mutate(Data=as.Date(Data))%>% 
       data.frame
   })
   output$tabela <- renderDataTable(datasetInput())
