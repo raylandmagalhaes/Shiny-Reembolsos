@@ -70,7 +70,7 @@ function(input, output, session) {
       mutate(Data=as.Date(Data))%>% 
       data.frame
   })
-  output$tabela <- renderDataTable(datasetInput())
+  output$tabela <- DT::renderDataTable(datasetInput())
   
   
   output$total <- renderPrint({

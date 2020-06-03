@@ -43,7 +43,7 @@ dashboardPage(
                     plotOutput('top_10empresas')),
                 
                 box( width = 12, status = "warning",
-                     dataTableOutput('tabela')),
+                     DT::dataTableOutput('tabela')),
                 
                 # box(status = "warning",
                 #   downloadLink("ReembolsosDeputado", 'Download da tabela acima'))
