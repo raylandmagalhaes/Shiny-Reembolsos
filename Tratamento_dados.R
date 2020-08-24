@@ -5,6 +5,6 @@ camara=bind_rows(list(camara2009,camara2010,camara2011,camara2012,camara2013,cam
   filter(total_net_value>0) %>%
   data.frame(check.names = F) %>% 
   filter(!is.na(total_net_value)&!is.na(document_value)) %>%
-  select(-congressperson_document,-urlDocumento,-document_id,-applicant_id,-numbers,-batch_number,-leg_of_the_trip,-passenger,-installment,-remark_value,-term_id,-term,-congressperson_document,-cpf)
+  select(-congressperson_document,-document_id,-applicant_id,-numbers,-batch_number,-leg_of_the_trip,-passenger,-installment,-remark_value,-term_id,-term,-congressperson_document,-cnpj_cpf)
 
 save(camara,file="camara_lite")
